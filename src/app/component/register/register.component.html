@@ -1,0 +1,55 @@
+<mat-card>
+    <mat-card-title> S'enregistrer</mat-card-title>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nom</mat-label>
+
+            <input matInput
+                   formControlName="lastName"
+                   required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Prénom</mat-label>
+
+            <input matInput
+                   formControlName="firstName"
+                   required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+
+            <input matInput
+                   formControlName="mail"
+                   required>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Mot de passe</mat-label>
+
+            <input matInput
+                   formControlName="password"
+                   required         >
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label> Confirmez le mot de passe</mat-label>
+
+            <input matInput
+                   formControlName="confirmPassword"
+                   required         >
+
+        </mat-form-field>
+        <mat-card-actions>
+            <button mat-raised-button class="btn-cnx" type="submit" (click)="back()">Retour</button>
+            <button mat-raised-button class="btn-register"  type="button" (click)="onSubmit()" >S' enregistrer</button>
+        </mat-card-actions>
+
+    </form>
+
+
+</mat-card>
