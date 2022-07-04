@@ -1,8 +1,11 @@
 
+<mat-toolbar  *ngIf="!_auth.getToken()">
 
+    <img class='logo-ensup' alt="Logo Eurofeu" src="assets/img/logo.png">
+
+</mat-toolbar>
 <!-- composant menu -->
-<!--<mat-toolbar  *ngIf="_authService.isAuthenticated | async">-->
-<mat-toolbar>
+<mat-toolbar  *ngIf="_auth.getToken()">
 <button class="btn-menu"
             (click)="_layout.toggleSidenav()"
             mat-icon-button>
@@ -43,7 +46,7 @@
        <!-- <span  class="name-user"> M.{{(_authService.user | async)?.lastName}}</span>-->
        <span  class="name-user"> M.</span>
         <mat-icon class="parent">account_circle</mat-icon>
-        <button class="logout-btn" mat-button (click)="logout()">
+        <button class="logout-btn" mat-button  (click)="logout()">
             <mat-icon>logout</mat-icon>
             <span>Déconnexion</span>
         </button>

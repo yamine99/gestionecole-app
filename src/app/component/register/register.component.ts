@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
   }
   onSubmit() {
-
+    console.log(this.registerForm.value);
   }
   back(){
     this.router.navigateByUrl("/connexion").then(r => console.log(r));
