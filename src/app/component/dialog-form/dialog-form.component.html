@@ -1,0 +1,77 @@
+<h1 mat-dialog-title>Ajouter un étudiant</h1>
+<div mat-dialog-content>
+
+
+    <form [formGroup]="investmentForm" (ngSubmit)="onSubmit()">
+
+        <ng-template matStepLabel>Société</ng-template>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Société</mat-label>
+
+            <input type="text"
+                   matInput
+                   formControlName="society"
+                   required>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Projet</mat-label>
+
+            <input type="text"
+                   matInput
+                   formControlName="project"
+                   required
+                   [matAutocomplete]="autoProject">
+
+            <mat-autocomplete autoActiveFirstOption #autoProject="matAutocomplete">
+                <mat-option *ngFor="let option of dataProjects" [value]="option.name">
+                    {{option.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Agence</mat-label>
+
+            <input type="text"
+                   matInput
+                   formControlName="location"
+                   required>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Libellé</mat-label>
+            <textarea matInput formControlName="title"
+                      pattern="[a-zA-Z]*">
+          </textarea>
+
+            <div *ngIf="investmentForm.controls['title'].invalid && (investmentForm.controls['title'].dirty || investmentForm.controls['title'].touched)" class="alert">
+                <div *ngIf="investmentForm.controls['title'].errors">
+                    Le Libellé est non valide
+                </div>
+            </div>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Montant Budget</mat-label>
+
+            <input type="number"
+                   matInput
+                   formControlName="amount"
+                   required
+            >
+
+        </mat-form-field>
+
+
+
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close (click)="onSubmit()">Envoyer</button>
+    <button mat-button mat-dialog-close>Fermer</button>
+</div>

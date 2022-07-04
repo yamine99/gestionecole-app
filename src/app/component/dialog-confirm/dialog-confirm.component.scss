@@ -1,0 +1,58 @@
+@import "../../../variables.scss";
+
+.dialog-container {
+  display: flex;
+}
+
+span {
+  float: left;
+}
+
+.mat-dialog-container {
+  padding: 0px;
+}
+
+.dialog-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: space-around;
+  justify-content: space-between;
+}
+
+
+button {
+  background-color: $main-color;
+  color: #ffffff;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  box-sizing: border-box;
+
+  box-shadow: lightgray 3px 3px 7px;
+  margin-right: 10px;
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: lightgray 3px 3px 7px;
+  }
+}
+
+.btn-no {
+  background-color: $fire-color;
+  color: white !important;
+}
+
+.content-container {
+  left: 10px;
+}
+
+mat-dialog-content {
+  margin: 40px !important;
+}
+
+dialog-actions {
+  margin: 0px;
+  padding: 0px;
+}
