@@ -13,7 +13,7 @@ const routes: Routes = [
     path:"cours",
     component:HomeComponent},
   {
-    path:"student/:id",
+    path:"etudiant/:id",
     component:StudentComponent},
 
   {

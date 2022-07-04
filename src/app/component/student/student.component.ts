@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DialogService} from "../../shared/dialog.service";
+import {LayoutService} from "../../service/layoutService";
 
 @Component({
   selector: 'app-student',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentComponent implements OnInit {
 
-  constructor() { }
+  constructor(    ) { }
 
   ngOnInit(): void {
   }
+
+
 
 }

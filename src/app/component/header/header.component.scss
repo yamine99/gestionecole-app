@@ -57,6 +57,7 @@ mat-toolbar {
   }
   .name-user{
     font-size: 0.8em;
+    color: $main-color;
   }
 }
 
@@ -71,6 +72,7 @@ img {
 
 mat-icon.parent {
   margin-right: 4%;
+  color: $main-color;
 }
 
 .content {
@@ -147,8 +149,8 @@ a {
 
 }
 
-.btn-menu:hover{
-  color: #d9a23f;
+.btn-menu{
+  color: $main-color;
 }
 
 

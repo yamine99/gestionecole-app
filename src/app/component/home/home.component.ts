@@ -63,6 +63,12 @@ export class HomeComponent implements OnInit {
 
 
   openDialogForm() {
-    this.dialog.open(DialogFormComponent);
+    this.dialog.open(DialogFormComponent,
+
+        {
+          width: '300px',
+          panelClass: 'confirm-dialog-container',
+          disableClose: true
+        });
   }
 }

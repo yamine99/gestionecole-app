@@ -1,7 +1,7 @@
 
 
 <div class="title">
-    <h1>La liste des étudiants</h1>
+    <h3>La liste des étudiants</h3>
     <button mat-raised-button (click)="openDialogForm()">
         <mat-icon>add_circle_outline</mat-icon>
         <span>Ajouter</span>
@@ -123,16 +123,16 @@
                                        showFirstLastButtons>
                         </mat-paginator>
                     </table>
+                    <ng-container *ngIf="dataSource.data.length == 0">
+                        <tr class="no-data">
+                            Aucun étudiant à afficher
+                        </tr>
+                    </ng-container>
                 </div>
 
             </div>
 
-            <!-- No data -->
-            <ng-container *ngIf="dataSource.data.length == 0">
-                <tr class="no-data">
-                    Aucun étudiant à afficher
-                </tr>
-            </ng-container>
+
         </div>
 
 

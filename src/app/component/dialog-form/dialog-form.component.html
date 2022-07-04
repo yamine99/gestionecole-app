@@ -9,8 +9,7 @@
         <mat-form-field appearance="outline">
             <mat-label>Société</mat-label>
 
-            <input type="text"
-                   matInput
+            <input matInput
                    formControlName="society"
                    required>
 
@@ -19,24 +18,16 @@
         <mat-form-field appearance="outline">
             <mat-label>Projet</mat-label>
 
-            <input type="text"
-                   matInput
+            <input matInput
                    formControlName="project"
-                   required
-                   [matAutocomplete]="autoProject">
+                   required         >
 
-            <mat-autocomplete autoActiveFirstOption #autoProject="matAutocomplete">
-                <mat-option *ngFor="let option of dataProjects" [value]="option.name">
-                    {{option.name}}
-                </mat-option>
-            </mat-autocomplete>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Agence</mat-label>
 
-            <input type="text"
-                   matInput
+            <input matInput
                    formControlName="location"
                    required>
 
@@ -44,9 +35,9 @@
 
         <mat-form-field appearance="outline">
             <mat-label>Libellé</mat-label>
-            <textarea matInput formControlName="title"
+            <input matInput formControlName="title"
                       pattern="[a-zA-Z]*">
-          </textarea>
+
 
             <div *ngIf="investmentForm.controls['title'].invalid && (investmentForm.controls['title'].dirty || investmentForm.controls['title'].touched)" class="alert">
                 <div *ngIf="investmentForm.controls['title'].errors">

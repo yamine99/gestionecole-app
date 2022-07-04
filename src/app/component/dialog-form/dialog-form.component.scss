@@ -2,6 +2,16 @@ form >*{
   width: 100%;
 
 }
+
+mat-form-field {
+  width: 400px;
+
+  margin-right: 2%;
+  font-size: 0.6em;
+  font-weight: 550;
+  color: black !important;
+  padding: 1px;
+}
 .alert{
   color: red;
 }
