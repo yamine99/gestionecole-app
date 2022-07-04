@@ -52,14 +52,17 @@ mat-form-field {
 }
 
 .btn-send{
-
-flex: 2;
+  font-size: 0.6em !important;
+  font-weight: 550 !important;
+flex: 3;
   margin-left: 5px;
   background-color: $main-color;
   color: white;
 }
 
 .btn-return{
+  font-size: 0.6em !important;
+  font-weight: 550 !important;
   flex: 1;
 }
 
