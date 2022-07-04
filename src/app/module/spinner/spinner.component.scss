@@ -1,3 +1,5 @@
+@import "src/variables";
+
 /* Spinner container */
 .spinner-container {
   display: flex;
@@ -31,7 +33,7 @@
   height: 40px;
   border-radius: 50%;
   border: 3px solid;
-  border-color: #FF3D00 transparent;
+  border-color: $main-color transparent;
 }
 
 @keyframes rotation {
@@ -42,3 +44,4 @@
     transform: rotate(360deg);
   }
 }
+

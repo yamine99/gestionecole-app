@@ -12,19 +12,24 @@ export class LoginComponent implements OnInit {
   constructor( private _formBuilder: FormBuilder, private router: Router, private _auth: AuthService) { }
 
   ngOnInit(): void {
+ if(this._auth.getToken()!=null){
+  this.router.navigateByUrl("/accueil").then(r => console.log(r));
+}else {
+  this.loginForm = this._formBuilder.group({
+    mail:[null, Validators.required],
+    password : [null, Validators.required],
+  },{
+    updateOn:'blur'
+  });
+}
 
-    this.loginForm = this._formBuilder.group({
-      mail:[null, Validators.required],
-      password : [null, Validators.required],
-    },{
-      updateOn:'blur'
-    });
 
   }
 
   onSubmit() {
     console.log(this.loginForm.value);
     this._auth.generateToken();
+    this.router.navigateByUrl("/accueil").then(r => console.log(r));
   }
 
   register(){

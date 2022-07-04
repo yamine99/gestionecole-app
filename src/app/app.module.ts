@@ -7,7 +7,6 @@ import { StudentComponent } from './component/student/student.component';
 import { HeaderComponent } from './component/header/header.component';
 import { LoginComponent } from './component/login/login.component';
 import {HomeComponent} from "./component/home/home.component";
-import { DialogFormComponent } from './component/dialog-form/dialog-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 
@@ -27,6 +26,9 @@ import {LayoutModule} from "./module/layout.module";
 import {MaterialModule} from "./module/material/material.module";
 import {HttpClientModule} from "@angular/common/http";
 import { RegisterComponent } from './component/register/register.component';
+import { FormComponent } from './component/form/form.component';
+import { CourseComponent } from './component/course/course.component';
+import { NotFoundComponent } from './component/not-found/not-found.component';
 
 
 @NgModule({
@@ -36,11 +38,13 @@ import { RegisterComponent } from './component/register/register.component';
     HeaderComponent,
     LoginComponent,
     HomeComponent,
-    DialogFormComponent,
     DialogConfirmComponent,
-    RegisterComponent
+    RegisterComponent,
+    FormComponent,
+    CourseComponent,
+    NotFoundComponent
   ],
-      entryComponents: [DialogFormComponent, DialogConfirmComponent]
+      entryComponents: [ DialogConfirmComponent]
     ,
   imports: [
     BrowserModule,

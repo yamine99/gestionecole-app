@@ -17,7 +17,7 @@
     <a [routerLinkActiveOptions]="{exact: true}" routerLink="accueil" routerLinkActive="active-link">
         <button class="menu-button" mat-button>
             <mat-icon>home</mat-icon>
-            <span>étudiants </span>
+            <span>Étudiants </span>
         </button>
     </a>
 
@@ -28,10 +28,13 @@
             <span>Cours</span>
         </button>
     </a>
-
-
-
-    <a [routerLinkActiveOptions]="{exact: true}" routerLink="help" routerLinkActive="active-link">
+    <a [routerLinkActiveOptions]="{exact: true}" routerLink="ajouter" routerLinkActive="active-link">
+    <button class="menu-button" mat-button >
+        <mat-icon>add_circle_outline</mat-icon>
+        <span>Créer un étudiant</span>
+    </button>
+    </a>
+    <a [routerLinkActiveOptions]="{exact: true}" routerLink="aide" routerLinkActive="active-link">
         <button class="menu-button" mat-button>
             <mat-icon>help</mat-icon>
             <span>Aide</span>

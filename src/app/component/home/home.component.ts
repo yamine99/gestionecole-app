@@ -7,7 +7,8 @@ import {Student} from "../../model/student";
 import {Store} from "../../shared/store";
 import {Observable, ReplaySubject, Subscription} from "rxjs";
 import {StudentService} from "../../service/student.service";
-import {DialogFormComponent} from "../dialog-form/dialog-form.component";
+import {Router} from "@angular/router";
+import {AuthService} from "../../shared/auth.service";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
   private students: Student[] = [];
   private store = new Store();
   constructor(private _studentService: StudentService,
-
+              private router: Router, private _auth: AuthService,
             public dialog: MatDialog) {
   }
 
@@ -48,7 +49,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+      if(this._auth.getToken()===null){
+          this.router.navigateByUrl("/connexion").then(r => console.log(r));
+      }
     this.subscription.add(
         this.dataTable.subscribe(
             (result) => {
@@ -62,13 +65,5 @@ export class HomeComponent implements OnInit {
   }
 
 
-  openDialogForm() {
-    this.dialog.open(DialogFormComponent,
 
-        {
-          width: '300px',
-          panelClass: 'confirm-dialog-container',
-          disableClose: true
-        });
-  }
 }

@@ -1,11 +1,8 @@
 
 
 <div class="title">
-    <h3>La liste des étudiants</h3>
-    <button mat-raised-button (click)="openDialogForm()">
-        <mat-icon>add_circle_outline</mat-icon>
-        <span>Ajouter</span>
-    </button>
+    <h1 mat-dialog-title> Étudiants - Campus SQY</h1>
+
 </div>
         <div class="mat-tab-body-content">
             <div *ngIf="ready|async; else spinner">
