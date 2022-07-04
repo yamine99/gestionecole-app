@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from "./component/home/home.component";
 import {StudentComponent} from "./component/student/student.component";
 import {LoginComponent} from "./component/login/login.component";
+import {RegisterComponent} from "./component/register/register.component";
 
 const routes: Routes = [
 
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path:"connexion",
     component:LoginComponent},
+
+  {
+    path:"enregistrer",
+    component:RegisterComponent},
 ];
 
 @NgModule({

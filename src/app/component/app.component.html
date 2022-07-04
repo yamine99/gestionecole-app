@@ -1,6 +1,6 @@
 <app-header></app-header>
 <!-- composant menu
-<mat-nav-list *ngIf="_authService.isAuthenticated | async" [ngClass]="{'menu' : _layout.isSidenavOpen }">-->
+<mat-nav-list *ngIf="_authService.isAuthenticated | async" [ngClass]="{'menu' : _layout.isSidenavOpen }">
     <mat-nav-list  [ngClass]="{'menu' : _layout.isSidenavOpen }">
 
     <button class="btn-menu"
@@ -40,7 +40,6 @@
 
 
     <div class="ml-auto" >
-        <!-- <span  class="name-user"> M.{{(_authService.user | async)?.lastName}}</span>-->
         <span  class="name-user"> M.</span>
         <mat-icon class="parent">account_circle</mat-icon>
         <button class="logout-btn" mat-button (click)="logout()">
@@ -50,5 +49,5 @@
 
     </div>
 
-</mat-nav-list>
+</mat-nav-list>-->
 <router-outlet></router-outlet>

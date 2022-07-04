@@ -1,1 +1,31 @@
-<p>login works!</p>
+<mat-card>
+    <mat-card-title> Connexion</mat-card-title>
+    <form [formGroup]="loginForm">
+
+        <ng-template matStepLabel>Email</ng-template>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+
+            <input matInput type="email"
+                   formControlName="mail"
+                   required>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Mot de passe</mat-label>
+
+            <input matInput type="password"
+                   formControlName="password"
+                   required         >
+
+        </mat-form-field>
+
+        <mat-card-actions>
+            <button mat-raised-button class="btn-cnx" type="submit"   (click)="onSubmit()">Se connecter</button>
+            <button mat-raised-button class="btn-register" type="button"  (click)="register()" >S' enregistrer</button>
+        </mat-card-actions>
+        </form>
+
+</mat-card>

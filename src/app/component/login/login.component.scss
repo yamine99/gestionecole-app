@@ -1,0 +1,40 @@
+@import "src/variables";
+
+form{
+display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-content: flex-end;
+  align-items: center;
+}
+
+mat-card{
+  top: 20%;
+  margin: 10px;
+}
+
+mat-card-title{
+  text-align: center;
+}
+
+button{
+  color: white;
+  font-size: 0.7em;
+  font-weight: 400;
+}
+.btn-register{
+background-color: $green-color;
+}
+
+.btn-cnx{
+  background-color: $main-color;
+}
+mat-form-field {
+  width: 400px;
+
+  margin-right: 2%;
+  font-size: 0.6em;
+  font-weight: 550;
+  color: black !important;
+  padding: 1px;
+}

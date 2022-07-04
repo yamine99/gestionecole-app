@@ -26,6 +26,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {LayoutModule} from "./module/layout.module";
 import {MaterialModule} from "./module/material/material.module";
 import {HttpClientModule} from "@angular/common/http";
+import { RegisterComponent } from './component/register/register.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {HttpClientModule} from "@angular/common/http";
     LoginComponent,
     HomeComponent,
     DialogFormComponent,
-    DialogConfirmComponent
+    DialogConfirmComponent,
+    RegisterComponent
   ],
       entryComponents: [DialogFormComponent, DialogConfirmComponent]
     ,
