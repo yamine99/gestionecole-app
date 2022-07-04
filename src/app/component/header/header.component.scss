@@ -1,0 +1,194 @@
+@import "src/variables";
+header {
+  text-align: center;
+  background-color: #EEE;
+  margin-bottom: 20px;
+
+
+
+  ul {
+    list-style-type:none;
+  }
+  li {
+    margin-left: 20px;
+  }
+  ul li a {
+    width: 80px;
+    display:block;
+    color: #d50707;
+    float:left;
+    margin: 0 10px;
+    text-decoration: none;
+    &:hover {
+      color: white !important;
+      border-radius: 5% !important;
+      padding: 2px 2px 2px 2px;
+      background-color: #4ff5b4;
+
+    }
+  }
+
+}
+
+.active {
+  color: white !important;
+  border-radius: 5% !important;
+  padding: 2px 2px 2px 2px;
+  background-color: #4ff5b4;
+
+}
+
+
+mat-toolbar {
+  background-color: $header-color;
+  color: #ffffff;
+  height: 64px;
+
+  .ml-auto {
+    margin-left: auto !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-eurofeu {
+    margin: -4px 0 0 12px;
+
+  }
+  .name-user{
+    font-size: 0.8em;
+  }
+}
+
+mat-nav-list {
+  color: $main-color;
+}
+
+img {
+  height: 40px;
+  margin-left: 12px;
+}
+
+mat-icon.parent {
+  margin-right: 4%;
+}
+
+.content {
+  height: calc(100vh - 98px);
+  border-radius: 10px;
+  margin: 16px;
+  margin-left: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 0.85rem;
+
+
+  mat-icon {
+    margin-right: 8px;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.active-link button {
+  background-color: rgb(217, 31, 31);
+  color: white;
+  border-radius: 0;
+}
+
+
+
+
+
+/** MENU */
+.menu{
+
+}
+ul li{
+  display:inline;
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 0.85rem;
+  color: #51547f;
+}
+
+mat-icon {
+  margin-right: 8px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.btn-menu{
+  display: none;
+
+}
+
+.btn-menu:hover{
+  color: #d9a23f;
+}
+
+
+.logout-btn{
+  background-color: #ff0001;
+  color: white;
+}
+
+button{
+  margin-left: 10px;
+}
+.active-link button {
+  background-color: $main-color;
+  color: white;
+  border-radius: 5px;
+}
+@media only screen and (max-width: 800px) {
+  .btn-menu{
+    display: block;
+  }
+  button span{
+    display: none;
+  }
+
+  .logout-btn:hover{
+    background-color: #ff0001;
+    color: white;
+  }
+  a{
+    display: none;
+  }
+}
+
+/*Size S*/
+@media only screen  and (max-width: 380px) {
+  .ml-auto span {
+    display: none;
+  }
+
+  .logo-eurofeu{
+    display: none;
+  }
+}

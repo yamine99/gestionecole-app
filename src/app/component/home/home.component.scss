@@ -1,0 +1,202 @@
+@import "../../../variables.scss";
+
+
+/* size large*/
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  color: $main-color;
+  border-bottom: solid  $main-color 2px;
+  height: 40px;
+}
+
+.content-turnover {
+  font-size: large;
+}
+
+.main {
+  white-space: nowrap;
+}
+mat-card{
+  font-size: 0.8rem;
+  background-color: inherit;
+
+}
+/* table*/
+table {
+  margin-top: 10px;
+  overflow: auto;
+  height-max: 40vh;
+  white-space: nowrap;
+  border-radius: 5px 5px 0px 0px;
+  border: solid 1px;
+}
+
+th.mat-header-cell {
+  text-align: center !important;
+}
+
+td {
+  text-align: center;
+  width: 90vw;
+  white-space: nowrap;
+  border-left: #8A8A8A solid 1px;
+
+}
+td.main-width {
+  width: 50%;
+}
+td.download {
+  width: 8%;
+  text-align: center;
+}
+td.download button mat-icon {
+  color: #4169e1;
+  cursor: pointer;
+}
+
+th {
+  padding-left: 10px;
+  border-bottom: solid 2px black;
+  color: white;
+
+}
+
+tr:nth-child(odd) {
+  background-color: rgba(222, 217, 217, 0.17);
+}
+
+tr:hover td {
+  // background-color: rgba(57, 57, 147, 0.49);
+  border-bottom: solid 1px;
+  // color: white;
+}
+
+.mat-header-row:first-of-type {
+  background-color: $main-color;
+  color: white;
+
+}
+
+mat-form-field {
+  width: 10%;
+}
+
+form.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+.no-data {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  min-height: 100px;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+}
+
+.mat-tab-body-content {
+  height: 85vh;
+  overflow: auto;
+}
+
+.table-content {
+  height: 70vh;
+  overflow: auto;
+}
+
+/* size M */
+@media only screen and (max-width: 850px) {
+  mat-form-field {
+    width: 90%;
+  }
+  form.flex {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+
+  table, thead, tbody, td, th {
+    display: block;
+
+  }
+
+  table {
+    width: 100%;
+    display: table;
+    border-radius: 10px 10px 0px 0px;
+    border: solid 1px;
+    padding: 5px 5px 5px 5px;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    text-align: start;
+    width: unset;
+    padding-left: 0 !important;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: inherit;
+
+  }
+
+  td::before {
+    content: attr(data-label);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    color: rgb(7, 7, 7);
+    font-size: larger;
+    font-weight: bold;
+    text-align: start;
+  }
+
+  tr:hover td {
+    background-color: unset;
+    border-bottom: inherit;
+    color: unset;
+  }
+
+  td.mat-cell:last-of-type {
+    // padding-right: 0 !important;
+    padding: 5px 5px 5px 5px;
+  }
+
+  td.main-width {
+    width: unset;
+  }
+  td.download {
+    width: unset;
+  }
+
+  th {
+    display: none;
+  }
+
+  tr.mat-header-row {
+    height: 0;
+  }
+  tr:nth-child(odd) {
+    margin-bottom: 1rem;
+  }
+}
+
+
+/*small size*/
+@media only screen and (max-width: 500px) {
+  td {
+    //width: 80vw;
+  }
+}

@@ -1,1 +1,52 @@
-<p>header works!</p>
+
+
+<!-- composant menu -->
+<!--<mat-toolbar  *ngIf="_authService.isAuthenticated | async">-->
+<mat-toolbar>
+<button class="btn-menu"
+            (click)="_layout.toggleSidenav()"
+            mat-icon-button>
+        <mat-icon *ngIf="!_layout.isSidenavOpen">menu</mat-icon>
+        <mat-icon *ngIf="_layout.isSidenavOpen">close</mat-icon>
+    </button>
+
+    <img class='logo-ensup' alt="Logo Eurofeu" src="assets/img/logo.png">
+    <a [routerLinkActiveOptions]="{exact: true}" routerLink="accueil" routerLinkActive="active-link">
+        <button class="menu-button" mat-button>
+            <mat-icon>home</mat-icon>
+            <span>étudiants </span>
+        </button>
+    </a>
+
+    <a [routerLinkActiveOptions]="{exact: true}" routerLink="cours"
+       routerLinkActive="active-link">
+        <button class="menu-button" mat-button>
+            <mat-icon>account_balance</mat-icon>
+            <span>Cours</span>
+        </button>
+    </a>
+
+
+
+    <a [routerLinkActiveOptions]="{exact: true}" routerLink="help" routerLinkActive="active-link">
+        <button class="menu-button" mat-button>
+            <mat-icon>help</mat-icon>
+            <span>Aide</span>
+        </button>
+    </a>
+
+
+
+
+
+    <div class="ml-auto" >
+       <!-- <span  class="name-user"> M.{{(_authService.user | async)?.lastName}}</span>-->
+        <mat-icon class="parent">account_circle</mat-icon>
+        <button class="logout-btn" mat-button (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Déconnexion</span>
+        </button>
+
+    </div>
+</mat-toolbar>
+

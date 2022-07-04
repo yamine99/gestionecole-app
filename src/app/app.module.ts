@@ -16,6 +16,18 @@ import { ReactiveFormsModule} from "@angular/forms";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { DialogConfirmComponent } from './component/dialog-confirm/dialog-confirm.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatCardModule} from "@angular/material/card";
+import {MatSelectModule} from "@angular/material/select";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {LayoutModule} from "./module/layout.module";
+import {MaterialModule} from "./module/material/material.module";
+import {HttpClientModule} from "@angular/common/http";
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,8 +35,11 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     HeaderComponent,
     LoginComponent,
     HomeComponent,
-    DialogFormComponent
+    DialogFormComponent,
+    DialogConfirmComponent
   ],
+      entryComponents: [DialogFormComponent, DialogConfirmComponent]
+    ,
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,7 +49,16 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatFormFieldModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatSelectModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatButtonModule,
+    LayoutModule,
+    MaterialModule,
+      HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
