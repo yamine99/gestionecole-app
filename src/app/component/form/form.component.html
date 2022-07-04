@@ -1,0 +1,84 @@
+
+
+<div class="title">
+    <h1 mat-dialog-title>Ajouter un étudiant</h1>
+
+</div>
+
+<div class="main">
+
+
+<div mat-dialog-content >
+
+
+    <form [formGroup]="addForm"  class="glass">
+
+        <ng-template matStepLabel>Nom</ng-template>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nom</mat-label>
+
+            <input matInput
+                   formControlName="lastName"
+                   required>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Prénom</mat-label>
+
+            <input matInput
+                   formControlName="firstName"
+                   required         >
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Date de naissance</mat-label>
+
+            <input matInput type="date"
+                   formControlName="date"
+                   required>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Spécialité</mat-label>
+            <input matInput formControlName="formation">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Mail</mat-label>
+
+            <input type="email"
+                   matInput
+                   formControlName="email"
+                   required
+            >
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Adresse</mat-label>
+
+            <input type="text"
+                   matInput
+                   formControlName="address"
+                   required
+            >
+
+        </mat-form-field>
+
+        <div class="footer-form"  >
+            <button   [class.spinner]="loading" [disabled]="loading" class="btn-send" mat-raised-button (click)="onSubmit()">Créer un étudiant
+
+            </button>
+            <button mat-raised-button  class="btn-return" (click)="onRest()">Réinitialiser</button>
+        </div>
+
+    </form>
+
+</div>
+</div>
+
