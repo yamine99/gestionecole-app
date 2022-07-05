@@ -2,7 +2,8 @@
 import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {User} from "../model/User";
+
+import {stringify} from "@angular/compiler/src/util";
 
 @Injectable({
     providedIn: 'root'
@@ -10,11 +11,13 @@ import {User} from "../model/User";
 export class AuthService {
 
 
+
     constructor(private http: HttpClient) {
 
     }
 
 
+    
     getToken(){
        return localStorage.getItem('token')
     }
@@ -23,8 +26,9 @@ export class AuthService {
         localStorage.removeItem('token');
     }
 
-    generateToken(  ){
-        localStorage.setItem("token", "dsqdsqdqsdqsdqs")
+    generateToken( ){
+
+        localStorage.setItem("token", "dsqsdqsdq");
     }
 
 }
