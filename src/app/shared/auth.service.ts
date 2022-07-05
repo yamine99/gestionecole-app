@@ -59,7 +59,7 @@ export class AuthService {
                 console.log(this.dateNumber);
             }, 1000);
 
-            if (this.dateNumber < 100 && this.dateNumber > 579) {
+            if (this.dateNumber < 580) {
 
                 if (location.pathname != "/session") {
                     this.router.navigateByUrl('/session').then(() => {

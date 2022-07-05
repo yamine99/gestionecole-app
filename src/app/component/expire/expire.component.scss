@@ -1,0 +1,50 @@
+@import "src/variables";
+
+
+mat-card{
+  top: 10%;
+  margin: 5% 25%;
+  height: 15%;
+  width: auto;
+}
+
+mat-card-title{
+  text-align: center;
+}
+mat-card-actions{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+  flex-direction: row-reverse;
+  width: 70%;
+
+}
+button{
+
+  color: white;
+  font-size: 0.7em;
+  font-weight: 400;
+}
+
+
+.btn-cnx{
+  flex: 3;
+  background-color: $main-color;
+}
+
+.glass{
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)) ;
+  backdrop-filter: blur(10px) ;
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 20px;
+  border:1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.msg{
+  color: $fire-color;
+  font-size: 0.8em;
+  font-weight: 700;
+}
