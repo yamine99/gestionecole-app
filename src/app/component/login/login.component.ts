@@ -9,11 +9,12 @@ import { AuthService } from "../../shared/auth.service";
 })
 export class LoginComponent implements OnInit {
   loginForm !: FormGroup;
+  msg !: string;
   constructor(private _formBuilder: FormBuilder, private router: Router, private _auth: AuthService) { }
 
   ngOnInit(): void {
 
-    if (this._auth.getToken() != null) {
+    if (this._auth.getToken('token') != null) {
       this.router.navigateByUrl("").then(r => console.log(r));
     } else {
       this.loginForm = this._formBuilder.group({
@@ -30,10 +31,19 @@ export class LoginComponent implements OnInit {
     this._auth.login(this.loginForm.value["mail"], this.loginForm.value["password"]).subscribe(
       {
         next: (response) => {
+          console.log(response.body);
           this._auth.saveToken(response.body);
+
           this.router.navigateByUrl('').then(r => console.log(r));
+               this._auth.countdown();
         },
         error: (error) => {
+          this.msg = "Accès refusée !"
+
+          setTimeout(() => {
+            this.msg = "";
+          }, 3000);
+
           console.log(error);
         }
       }

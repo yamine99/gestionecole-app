@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {DialogService} from "../shared/dialog.service";
 import {LayoutService} from "../service/layoutService";
+import {AuthService} from "../shared/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -9,18 +11,31 @@ import {LayoutService} from "../service/layoutService";
 })
 export class AppComponent {
   title = 'gestionecole-app';
-constructor(private _dialogService: DialogService,     public _layout: LayoutService,) {
-}
-  logout(): void {
-    this._dialogService.openConfirmDialog("Voulez-vous vraiment quitter ?").afterClosed().subscribe(
-        res => {
-          if (res) {
-            /*this.router.navigateByUrl('logout').then(() => {
-              this._authService.logout(this.token);
-            });*/
-          }
-        })
+    constructor(
+        public _auth: AuthService,
+        public _layout: LayoutService,
+        private router: Router,
+        private _dialogService: DialogService
+    ) {
+
+    }
 
 
-  }
+    logout(): void {
+        this._dialogService.openConfirmDialog("Voulez-vous vraiment quitter ?").afterClosed().subscribe(
+            res => {
+                if (res) {
+                    this.router.navigateByUrl('/connexion').then(() => {
+                        this._auth.removeToken();
+                    });
+                }
+            })
+
+
+    }
+
+
+
+
 }
+

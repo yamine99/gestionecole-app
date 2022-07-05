@@ -24,11 +24,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   /* this._authService.user.subscribe(value => {
-      this.token = value?.token;
-      this.mail = value?.email
-    });*/
-
 
   }
 
@@ -39,7 +34,7 @@ export class HeaderComponent implements OnInit {
 
             this.router.navigateByUrl('/connexion').then(() => {
               this._auth.removeToken();
-          //    this._authService.logout(this.token);
+
             });
           }
         })

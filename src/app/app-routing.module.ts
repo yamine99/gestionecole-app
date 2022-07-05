@@ -7,6 +7,7 @@ import {RegisterComponent} from "./component/register/register.component";
 import {FormComponent} from "./component/form/form.component";
 import {CourseComponent} from "./component/course/course.component";
 import {NotFoundComponent} from "./component/not-found/not-found.component";
+import {ExpireComponent} from "./component/expire/expire.component";
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path:"aide",
     component: HomeComponent
+  },
+  {
+    path:"session",
+    component: ExpireComponent
   },
 
 
