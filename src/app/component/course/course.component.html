@@ -2,3 +2,19 @@
     <h1 mat-dialog-title> Cours</h1>
 
 </div>
+<div>
+
+    <form [formGroup]="coursForm">
+<mat-form-field appearance="fill">
+    <mat-select (selectionChange)="onChangeCours($event)" formControlName="cours"
+                placeholder="List des cours">
+
+        <mat-option *ngFor="let option of dataCours$ | async" [value]="option.id">
+            {{option.theme}} | Heurs : {{option.nbHeures}}
+        </mat-option>
+
+    </mat-select>
+</mat-form-field>
+
+        </form>
+</div>
