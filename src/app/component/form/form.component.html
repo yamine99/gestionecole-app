@@ -78,7 +78,7 @@
         </mat-form-field>
 
         <div class="footer-form"  >
-            <button   [class.spinner]="loading" [disabled]="loading" class="btn-send" mat-raised-button (click)="onSubmit()">Créer un étudiant
+            <button   [class.spinner]="loading" [disabled]="loading"  [disabled]="addForm.invalid"  class="btn-send" mat-raised-button (click)="onSubmit()">Créer un étudiant
 
             </button>
             <button mat-raised-button  class="btn-return" (click)="onRest()">Réinitialiser</button>

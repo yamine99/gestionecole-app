@@ -30,8 +30,8 @@ export class FormComponent implements OnInit {
       date : [null, Validators.required],
       address : [null, Validators.required],
       formation : [null],
-      phone : [null],
-      email: [null, Validators.required]
+      phone : [null, Validators.required, Validators.maxLength(10)],
+      email: [null, Validators.required, Validators.email]
     },{
       updateOn:'blur'
     });
@@ -54,7 +54,6 @@ export class FormComponent implements OnInit {
 
   onRest() {
     this.msg ="";
-    this.loading = !this.loading;
     this.addForm.reset();
   }
 }
