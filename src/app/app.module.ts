@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,11 +24,12 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {LayoutModule} from "./module/layout.module";
 import {MaterialModule} from "./module/material/material.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { RegisterComponent } from './component/register/register.component';
 import { FormComponent } from './component/form/form.component';
 import { CourseComponent } from './component/course/course.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptors';
 
 
 @NgModule({
@@ -66,7 +67,16 @@ import { NotFoundComponent } from './component/not-found/not-found.component';
     MaterialModule,
       HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID, useValue: 'fr-FR'
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

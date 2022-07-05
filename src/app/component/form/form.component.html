@@ -4,7 +4,7 @@
     <h1 mat-dialog-title>Ajouter un étudiant</h1>
 
 </div>
-
+<h4 > {{msg}}</h4>
 <div class="main">
 
 
@@ -15,7 +15,7 @@
 
         <ng-template matStepLabel>Nom</ng-template>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
             <mat-label>Nom</mat-label>
 
             <input matInput
@@ -24,7 +24,7 @@
 
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
             <mat-label>Prénom</mat-label>
 
             <input matInput
@@ -33,7 +33,7 @@
 
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
             <mat-label>Date de naissance</mat-label>
 
             <input matInput type="date"
@@ -42,13 +42,14 @@
 
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
             <mat-label>Spécialité</mat-label>
             <input matInput formControlName="formation">
 
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+
+        <mat-form-field appearance="fill">
             <mat-label>Mail</mat-label>
 
             <input type="email"
@@ -59,7 +60,7 @@
 
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
             <mat-label>Adresse</mat-label>
 
             <input type="text"
@@ -67,6 +68,12 @@
                    formControlName="address"
                    required
             >
+
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Téléphone</mat-label>
+            <input type="phone" matInput formControlName="phone" required>
 
         </mat-form-field>
 

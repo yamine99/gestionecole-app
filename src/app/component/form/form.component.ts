@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ThemePalette} from "@angular/material/core";
 import {Router} from "@angular/router";
+import {StudentService} from "../../service/student.service";
 
 @Component({
   selector: 'app-form',
@@ -18,8 +19,8 @@ export class FormComponent implements OnInit {
   color: ThemePalette = 'primary';
   checked = false;
   disabled = false;
-
-  constructor(private router: Router,  private _formBuilder: FormBuilder) { }
+  msg !: string;
+  constructor(private router: Router,  private _formBuilder: FormBuilder, private _studentService: StudentService,  ) { }
 
   ngOnInit() {
 
@@ -28,7 +29,8 @@ export class FormComponent implements OnInit {
       firstName : [null, Validators.required],
       date : [null, Validators.required],
       address : [null, Validators.required],
-      formation : [null, Validators.min(500)],
+      formation : [null],
+      phone : [null],
       email: [null, Validators.required]
     },{
       updateOn:'blur'
@@ -38,12 +40,20 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     this.loading = !this.loading;
-    console.log(this.addForm.value);
-    this.addForm.reset();
+    this._studentService.addStudent(this.addForm.value).subscribe( value => {
+      this.loading = !this.loading;
+      this.msg="L'étudiant à été bien enregistrer ";
+      console.log(value);
+      console.log(this.addForm.value);
+      this.addForm.reset();
+    })
+
+
   }
 
 
   onRest() {
+    this.msg ="";
     this.loading = !this.loading;
     this.addForm.reset();
   }

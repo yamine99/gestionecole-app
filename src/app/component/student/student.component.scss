@@ -1,0 +1,25 @@
+@import "src/variables";
+
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  padding-bottom: 5px;
+  margin: 5px;
+  color: $main-color;
+  border-bottom: solid  $main-color 2px;
+  height: 40px;
+}
+img{
+  width: 100px;
+}
+.main{
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}

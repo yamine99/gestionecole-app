@@ -4,6 +4,7 @@
     <h1 mat-dialog-title> Étudiants - Campus SQY</h1>
 
 </div>
+<p>{{msg}}</p>
         <div class="mat-tab-body-content">
             <div *ngIf="ready|async; else spinner">
 
@@ -84,30 +85,51 @@
 
 
                         <ng-container matColumnDef="id">
-                            <th *matHeaderCellDef mat-header-cell> No.</th>
-                            <td *matCellDef="let element" mat-cell> {{element.id}} </td>
+                            <th *matHeaderCellDef mat-header-cell> Identifiant</th>
+                            <td *matCellDef="let element" mat-cell> {{element.uuid}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="name">
+                        <ng-container matColumnDef="lastName">
                             <th *matHeaderCellDef mat-header-cell> Nom</th>
-                            <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+                            <td *matCellDef="let element" mat-cell> {{element.nom}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="class">
-                            <th *matHeaderCellDef mat-header-cell> Classe</th>
-                            <td *matCellDef="let element" mat-cell> {{element.cours}} </td>
+                        <ng-container matColumnDef="firstName">
+                            <th *matHeaderCellDef mat-header-cell> Prénom</th>
+                            <td *matCellDef="let element" mat-cell> {{element.prenom}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="email">
+                            <th *matHeaderCellDef mat-header-cell> Mail</th>
+                            <td *matCellDef="let element" mat-cell> {{element.email}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="date">
+                            <th *matHeaderCellDef mat-header-cell> Date de Naissance</th>
+                            <td *matCellDef="let element" mat-cell> {{element.dateNaissance}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="phone">
+                            <th *matHeaderCellDef mat-header-cell> Téléphone</th>
+                            <td *matCellDef="let element" mat-cell> {{element.telephone}} </td>
                         </ng-container>
 
 
                         <ng-container matColumnDef="action">
                             <th *matHeaderCellDef mat-header-cell> Action</th>
 
-                            <td *matCellDef="let element" class="td-action" cols="1" mat-cell rowHeight="2:1">
+                            <td *matCellDef="let element" class="td-action" cols="2" mat-cell rowHeight="2:1">
 
-                                <button [routerLink]="['/detail/', element.id]" mat-button>
+                                <button [routerLink]="['/etudiant/', element.uuid]" mat-button>
                                     <mat-icon>visibility</mat-icon>
                                 </button>
+
+                                <button  class="btn-delete" (click)="delete(element.uuid)" mat-button>
+                                    <mat-icon>delete</mat-icon>
+                                </button>
                             </td>
+
+
 
 
                         </ng-container>

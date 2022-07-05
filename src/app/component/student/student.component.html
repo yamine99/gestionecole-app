@@ -1,1 +1,31 @@
-<p>student works!</p>
+
+<div class="title">
+    <h1 mat-dialog-title> Étudiant {{student.prenom}} {{student.nom}} </h1>
+
+</div>
+<div class="mat-tab-body-content ">
+        <div *ngIf="ready; else spinner" class="main">
+            <img src="../../../assets/img/avatar.jpg"/>
+               <ul>
+                    <li>Prénom :  {{student.prenom}}</li>
+                    <li>Nom :  {{student.nom}}</li>
+                    <li>Date de Naissance :  {{student.dateNaissance}}</li>
+                    <li>Adresse Mail :  {{student.email}}</li>
+                    <li>Adresse :  {{student.adresse}}</li>
+                    <li>Télephone :  {{student.telephone}}</li>
+                </ul>
+        </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+    <ng-template #spinner>
+        <app-layout-spinner></app-layout-spinner>
+    </ng-template>

@@ -9,6 +9,7 @@ import {Observable, ReplaySubject, Subscription} from "rxjs";
 import {StudentService} from "../../service/student.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../shared/auth.service";
+import {DialogService} from "../../shared/dialog.service";
 
 
 @Component({
@@ -17,11 +18,13 @@ import {AuthService} from "../../shared/auth.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public displayedColumns: string[] = ['id', 'name', 'class'];
+  public displayedColumns: string[] = ['id', 'lastName', 'firstName', 'date', 'email', 'phone','action'];
   private students: Student[] = [];
   private store = new Store();
+  msg !: string;
   constructor(private _studentService: StudentService,
               private router: Router, private _auth: AuthService,
+              private _dialogService: DialogService,
             public dialog: MatDialog) {
   }
 
@@ -55,6 +58,7 @@ export class HomeComponent implements OnInit {
     this.subscription.add(
         this.dataTable.subscribe(
             (result) => {
+                console.log(result);
             //  result = result.filter(value => value.state === false && value.refuse === false);
               this.dataSource.data = result;
               this.students = result;
@@ -65,5 +69,18 @@ export class HomeComponent implements OnInit {
   }
 
 
+    delete(uuid: string) {
+        this._dialogService.openConfirmDialog("Voulez-vous vraiment supprimer !").afterClosed().subscribe(
+            res => {
+                if (res) {
+                    this._studentService.deleteStudent(uuid).subscribe(value => {
+                        console.log(value);
+                        this.msg = value;
+                    });
+                }
+            });
 
+
+
+    }
 }
