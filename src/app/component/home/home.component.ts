@@ -52,9 +52,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      if(this._auth.getToken()===null){
+      if(this._auth.getToken('token')===null){
           this.router.navigateByUrl("/connexion").then(r => console.log(r));
       }
+      this._auth.countdown();
     this.subscription.add(
         this.dataTable.subscribe(
             (result) => {

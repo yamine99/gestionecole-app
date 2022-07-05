@@ -43,8 +43,10 @@ export class FormComponent implements OnInit {
     this._studentService.addStudent(this.addForm.value).subscribe( value => {
       this.loading = !this.loading;
       this.msg="L'étudiant à été bien enregistrer ";
-      console.log(value);
       console.log(this.addForm.value);
+      setTimeout(() => {
+        this.msg = "";
+      }, 2000);
       this.addForm.reset();
     })
 

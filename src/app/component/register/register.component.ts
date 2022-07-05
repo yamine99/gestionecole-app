@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   constructor( private _formBuilder: FormBuilder, private router: Router, private _auth: AuthService) { }
 
   ngOnInit(): void {
-    if(this._auth.getToken()!=null){
+    if(this._auth.getToken('token')!=null){
       this.router.navigateByUrl("/accueil").then(r => console.log(r));
     }else{
       this.registerForm = this._formBuilder.group({

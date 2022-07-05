@@ -39,6 +39,6 @@ export class StudentService {
   }
 
   deleteStudent(uuid:string): Observable<string>{
-    return this.http.get<string>(environment.api.endpoint+"delete/"+uuid);
+    return this.http.delete<string>(environment.api.endpoint+"delete/"+uuid);
   }
 }

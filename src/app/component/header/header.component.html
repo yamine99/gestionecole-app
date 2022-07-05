@@ -1,11 +1,11 @@
 
-<mat-toolbar  *ngIf="!_auth.getToken()">
+<mat-toolbar  *ngIf="!_auth.getToken('token')">
 
     <img class='logo-ensup' alt="Logo Eurofeu" src="assets/img/logo.png">
 
 </mat-toolbar>
 <!-- composant menu -->
-<mat-toolbar  *ngIf="_auth.getToken()">
+<mat-toolbar  *ngIf="_auth.getToken('token')">
 <button class="btn-menu"
             (click)="_layout.toggleSidenav()"
             mat-icon-button>
@@ -34,12 +34,7 @@
         <span>Créer un étudiant</span>
     </button>
     </a>
-    <a [routerLinkActiveOptions]="{exact: true}" routerLink="aide" routerLinkActive="active-link">
-        <button class="menu-button" mat-button>
-            <mat-icon>help</mat-icon>
-            <span>Aide</span>
-        </button>
-    </a>
+
 
 
 
@@ -47,7 +42,7 @@
 
     <div class="ml-auto" >
        <!-- <span  class="name-user"> M.{{(_authService.user | async)?.lastName}}</span>-->
-       <span  class="name-user"> M.</span>
+
         <mat-icon class="parent">account_circle</mat-icon>
         <button class="logout-btn" mat-button  (click)="logout()">
             <mat-icon>logout</mat-icon>
