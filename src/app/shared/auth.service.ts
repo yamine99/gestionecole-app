@@ -19,8 +19,8 @@ export class AuthService {
 
     login(email : string, password : string) : Observable<any> {
         return this.http.post(environment.api.root+"login",
-        {"username":email,"password":password},
-        {headers: new HttpHeaders({"Accept":"application/json", "Content-type":"application/x-www-form-urlencoded"}), responseType: "json"});
+        {"email":email,"password":password},
+        {headers: new HttpHeaders({"Accept":"application/json","Content-type":"application/json"}), observe: "response", responseType: "json"});
       }
     
     getToken(){
@@ -31,9 +31,9 @@ export class AuthService {
         localStorage.removeItem('token');
     }
 
-    generateToken( ){
+    saveToken(token : any){
 
-        localStorage.setItem("token", "dsqsdqsdq");
+        localStorage.setItem("token", token["token"]);
     }
 
 }

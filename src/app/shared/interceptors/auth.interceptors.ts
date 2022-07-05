@@ -18,15 +18,16 @@ export class AuthInterceptor implements HttpInterceptor {
         request: HttpRequest<any>,
         next: HttpHandler,
     ): Observable<HttpEvent<any>> {
-        const user = "directeur@ensup.eu";
-        const password= "directeur";
-        // if (request.url.includes('/api/')) {
-        //     return next.handle(request.clone({
-        //         headers: request.headers
-        //             .set("Content-type","application/json")
-        //             .set("Authorization", 'Basic '+btoa(user+":"+password))
-        //     }))
-        // }
+        const token = localStorage.getItem("token");
+        if (request.url.includes('/api/')) {
+            if(token !== ""){
+                return next.handle(request.clone({
+                    headers: request.headers
+                        .set("Content-type","application/json")
+                        .set("Authorization", 'Bearer '+token)
+                }))
+            }   
+        }
         return next.handle(request);
     }
 }
