@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
  if(this._auth.getToken()!=null){
-  this.router.navigateByUrl("/accueil").then(r => console.log(r));
+  this.router.navigateByUrl("").then(r => console.log(r));
 }else {
   this.loginForm = this._formBuilder.group({
     mail:[null, Validators.required, Validators.email],
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     console.log(this.loginForm.value);
     this._auth.generateToken();
-    this.router.navigateByUrl("/accueil").then(r => console.log(r));
+    this.router.navigateByUrl("").then(r => console.log(r));
   }
 
   register(){

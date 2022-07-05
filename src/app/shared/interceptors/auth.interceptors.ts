@@ -20,7 +20,8 @@ export class AuthInterceptor implements HttpInterceptor {
     ): Observable<HttpEvent<any>> {
         const user = "directeur@ensup.eu";
         const password= "directeur";
-        if (request.url.includes('/api/')) {
+
+     if (request.url.includes('/api/')) {
             return next.handle(request.clone({
                 headers: request.headers
                     .set("Content-type","application/json")

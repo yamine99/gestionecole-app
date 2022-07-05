@@ -6,13 +6,14 @@ import {LoginComponent} from "./component/login/login.component";
 import {RegisterComponent} from "./component/register/register.component";
 import {FormComponent} from "./component/form/form.component";
 import {CourseComponent} from "./component/course/course.component";
+import {NotFoundComponent} from "./component/not-found/not-found.component";
 
 const routes: Routes = [
   {
     path:"connexion",
     component:LoginComponent},
   {
-    path:"accueil",
+    path:"",
     component:HomeComponent},
   {
     path:"cours",
@@ -35,6 +36,11 @@ const routes: Routes = [
   {
     path:"enregistrer",
     component:RegisterComponent},
+
+  {
+    path:"**",
+    component: NotFoundComponent
+  },
 ];
 
 @NgModule({
