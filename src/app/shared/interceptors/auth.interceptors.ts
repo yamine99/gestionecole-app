@@ -20,13 +20,13 @@ export class AuthInterceptor implements HttpInterceptor {
     ): Observable<HttpEvent<any>> {
         const user = "directeur@ensup.eu";
         const password= "directeur";
-        if (request.url.includes('/api/')) {
-            return next.handle(request.clone({
-                headers: request.headers
-                    .set("Content-type","application/json")
-                    .set("Authorization", 'Basic '+btoa(user+":"+password))
-            }))
-        }
+        // if (request.url.includes('/api/')) {
+        //     return next.handle(request.clone({
+        //         headers: request.headers
+        //             .set("Content-type","application/json")
+        //             .set("Authorization", 'Basic '+btoa(user+":"+password))
+        //     }))
+        // }
         return next.handle(request);
     }
 }

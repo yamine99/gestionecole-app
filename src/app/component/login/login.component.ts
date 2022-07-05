@@ -28,8 +28,15 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log(this.loginForm.value);
-    this._auth.generateToken();
-    this.router.navigateByUrl("/accueil").then(r => console.log(r));
+    this._auth.login(this.loginForm.value["mail"], this.loginForm.value["password"]).subscribe(
+     {
+       next(response) {
+           console.log(response.headers);
+       },
+     } 
+    )
+    // this._auth.generateToken();
+    // this.router.navigateByUrl("/accueil").then(r => console.log(r));
   }
 
   register(){
