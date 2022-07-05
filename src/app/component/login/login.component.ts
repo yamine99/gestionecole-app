@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       {
         next: (response) => {
           this._auth.saveToken(response.body);
-          this.router.navigateByUrl('/accueil').then(r => console.log(r));
+          this.router.navigateByUrl('').then(r => console.log(r));
         },
         error: (error) => {
           console.log(error);
