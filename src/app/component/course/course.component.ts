@@ -55,12 +55,6 @@ export class CourseComponent implements OnInit {
   }
 
   onChangeCours($event: MatSelectChange) {
-<<<<<<< HEAD
-    console.log($event.source);
-    console.log("id cource from event : " + $event.value)
-=======
-
->>>>>>> 98aa4a2ab5eb3cc15786566f0aaac863152dbf55
     let linksArray: CourseLink[] = [];
     this._courService.getByCourse($event.value).subscribe({
       next: (res) => {
