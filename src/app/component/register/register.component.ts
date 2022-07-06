@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     if(this._auth.getToken()!=null){
-      this.router.navigateByUrl("/accueil").then(r => console.log(r));
+      this.router.navigateByUrl("").then(r => console.log(r));
     }else{
       this.registerForm = this._formBuilder.group({
         lastName:[null, Validators.required],
