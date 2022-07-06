@@ -18,9 +18,10 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <button  mat-raised-button class="btn-cnx" type="submit"   (click)="add()" >Associer</button>
+        <button  mat-raised-button class="btn-cnx" type="submit"  [disabled]="dataForm.invalid"   (click)="add()" >Associer</button>
 
     </form>
+    <p>{{msg}}</p>
     <table mat-table [dataSource]="dataStudentsObs" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
