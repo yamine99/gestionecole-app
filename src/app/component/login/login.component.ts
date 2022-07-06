@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl("").then(r => console.log(r));
     } else {
       this.loginForm = this._formBuilder.group({
-        mail: [null, Validators.required, Validators.email],
+        mail: [null, Validators.required],
         password: [null, Validators.required],
       }, {
         updateOn: 'blur'

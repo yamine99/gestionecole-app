@@ -70,13 +70,19 @@ export class HomeComponent implements OnInit {
         this._dialogService.openConfirmDialog("Voulez-vous vraiment supprimer !").afterClosed().subscribe(
             res => {
                 if (res) {
+                    this.ngOnInit();
                     this._studentService.deleteStudent(uuid).subscribe(value => {
                         console.log(value);
-                        this.msg = value;
+                        this.msg = "L' étudiant a été bien supprimer ";
+
+
+
                     });
                 }
             });
-
+        setTimeout(() => {
+            this.msg = '';
+        }, 4000);
 
 
     }

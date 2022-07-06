@@ -31,6 +31,7 @@ import { CourseComponent } from './component/course/course.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptors';
 import { ExpireComponent } from './component/expire/expire.component';
+import { EditComponent } from './component/edit/edit.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ExpireComponent } from './component/expire/expire.component';
     FormComponent,
     CourseComponent,
     NotFoundComponent,
-    ExpireComponent
+    ExpireComponent,
+    EditComponent
   ],
       entryComponents: [ DialogConfirmComponent]
     ,

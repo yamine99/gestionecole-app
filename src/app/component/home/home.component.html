@@ -78,7 +78,8 @@
                         </mat-form-field>
 
                     </form>
-                </mat-card>-->
+                </mat-card>
+                <p *ngIf="msg!=''" class="message" >{{msg}}</p>-->
                 <div class="table-content">
 
                     <table *ngIf="dataSource.data.length > 0" [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
@@ -117,6 +118,10 @@
 
                                 <button [routerLink]="['/etudiant/', element.uuid]" mat-button>
                                     <mat-icon>visibility</mat-icon>
+                                </button>
+
+                                <button  class="btn-update" [routerLink]="['/edit/', element.uuid]" mat-button>
+                                    <mat-icon>edit</mat-icon>
                                 </button>
 
                                 <button  class="btn-delete" (click)="delete(element.uuid)" mat-button>

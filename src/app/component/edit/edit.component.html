@@ -1,0 +1,90 @@
+
+
+<div class="title">
+    <h1 mat-dialog-title>Éditer l'étudiant : {{student?.prenom +" "+student?.prenom}}</h1>
+
+</div>
+<p *ngIf="msg" class="message" >{{msg}}</p>
+<div *ngIf="ready; else spinner" class="main">
+
+
+    <div mat-dialog-content >
+
+
+        <form [formGroup]="updateForm"  class="glass">
+
+            <ng-template matStepLabel>Nom</ng-template>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Nom</mat-label>
+
+                <input matInput
+                       formControlName="lastName"
+                       required>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Prénom</mat-label>
+
+                <input matInput
+                       formControlName="firstName"
+                       required         >
+
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Date de naissance</mat-label>
+
+                <input matInput type="date"
+                       formControlName="date"
+                       required>
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="fill">
+                <mat-label>Mail</mat-label>
+
+                <input type="email"
+                       matInput
+                       formControlName="email"
+                       required
+                >
+
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Adresse</mat-label>
+
+                <input type="text"
+                       matInput
+                       formControlName="address"
+                       required
+                >
+
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Téléphone</mat-label>
+                <input type="phone" matInput formControlName="phone" required>
+
+            </mat-form-field>
+
+            <div class="footer-form"  >
+                <button   [class.spinner]="loading" [disabled]="loading"
+                          [disabled]="updateForm.invalid"  class="btn-send" mat-raised-button (click)="onSubmit()">
+                    Éditer
+
+                </button>
+                <button mat-raised-button  class="btn-return" (click)="onRest()">Réinitialiser</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<ng-template #spinner>
+    <app-layout-spinner></app-layout-spinner>
+</ng-template>

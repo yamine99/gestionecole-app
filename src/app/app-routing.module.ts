@@ -8,6 +8,7 @@ import {FormComponent} from "./component/form/form.component";
 import {CourseComponent} from "./component/course/course.component";
 import {NotFoundComponent} from "./component/not-found/not-found.component";
 import {ExpireComponent} from "./component/expire/expire.component";
+import {EditComponent} from "./component/edit/edit.component";
 
 const routes: Routes = [
   {
@@ -23,6 +24,9 @@ const routes: Routes = [
     path:"etudiant/:id",
     component:StudentComponent},
 
+  {
+    path:"edit/:id",
+    component:EditComponent},
   {
     path:"ajouter",
     component: FormComponent

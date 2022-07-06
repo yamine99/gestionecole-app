@@ -30,8 +30,8 @@ export class FormComponent implements OnInit {
       date : [null, Validators.required],
       address : [null, Validators.required],
       formation : [null],
-      phone : [null, Validators.required, Validators.maxLength(10)],
-      email: [null, Validators.required, Validators.email]
+      phone : [null, Validators.required],
+      email: [null, Validators.required]
     },{
       updateOn:'blur'
     });

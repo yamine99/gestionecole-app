@@ -1,6 +1,6 @@
 
 <div class="title">
-    <h1 mat-dialog-title> Étudiant {{student.prenom}} {{student.nom}} </h1>
+    <h1 mat-dialog-title> Étudiant {{student?.prenom}} {{student?.nom}} </h1>
 
 </div>
 <div class="mat-tab-body-content ">
@@ -16,6 +16,42 @@
                 </ul>
         </div>
 
+    <div class="title">
+        <h4 mat-dialog-title> La liste des cours </h4>
+    </div>
+
+
+    <div class="table-content">
+    <table mat-table  *ngIf="coursestudent.length > 0" [dataSource]="coursestudent" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Theme </th>
+            <td mat-cell *matCellDef="let element"> {{element.theme}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="nbr">
+            <th mat-header-cell *matHeaderCellDef> Nombre d'heures </th>
+            <td mat-cell *matCellDef="let element"> {{element.nbHeures}} </td>
+        </ng-container>
+
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+        <ng-container *ngIf="coursestudent.length == 0">
+            <tr class="no-data">
+                Aucun cours à afficher
+            </tr>
+        </ng-container>
+    </div>
 </div>
 
 

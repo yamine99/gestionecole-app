@@ -53,4 +53,22 @@ export class StudentService {
   deleteStudent(uuid:string): Observable<string>{
     return this.http.delete<string>(environment.api.endpoint+"delete/"+uuid);
   }
+
+
+
+
+  updateStudent(formValue:{uuid: string,
+    lastName: string, firstName: string, date: string, phone:string, email:string, address: string
+  }): Observable<any>{
+    let student = new Student();
+    student.uuid =formValue.uuid;
+    student.prenom =formValue.firstName;
+    student.nom =formValue.lastName;
+    student.dateNaissance =formValue.date;
+    student.telephone =formValue.phone;
+    student.email =formValue.email;
+    student.adresse =formValue.address;
+
+    return this.http.put<Student>(environment.api.endpoint+"update", student);
+  }
 }

@@ -60,3 +60,117 @@ mat-form-field {
   width: 25%;
   margin: 5px;
 }
+
+/* table*/
+table {
+  margin: 10px;
+  overflow: auto;
+  height-max: 40vh;
+  white-space: nowrap;
+  border-radius: 5px 5px 0px 0px;
+  border: solid 1px;
+}
+
+th.mat-header-cell {
+  text-align: center !important;
+}
+
+td {
+  text-align: center;
+  width: 90vw;
+  white-space: nowrap;
+  border-left: #8A8A8A solid 1px;
+
+}
+td.main-width {
+  width: 50%;
+}
+td.download {
+  width: 8%;
+  text-align: center;
+}
+td.download button mat-icon {
+  color: #4169e1;
+  cursor: pointer;
+}
+
+th {
+  padding-left: 10px;
+  border-bottom: solid 2px black;
+  color: white;
+
+}
+
+tr:nth-child(odd) {
+  background-color: rgba(222, 217, 217, 0.17);
+}
+tr:nth-child(odd) {
+  background-color: rgba(222, 217, 217, 0.17);
+}
+
+tr:hover td {
+  // background-color: rgba(57, 57, 147, 0.49);
+  border-bottom: solid 1px;
+  // color: white;
+}
+
+.mat-header-row:first-of-type {
+  background-color: $main-color;
+  color: white;
+
+}
+
+mat-form-field {
+  width: 10%;
+  font-size: 0.8em;
+}
+
+form.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+.no-data {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  min-height: 100px;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+}
+
+.mat-tab-body-content {
+  height: 85vh;
+  overflow: auto;
+}
+
+.table-content {
+  height: 70vh;
+  overflow: auto;
+}
+
+
+mat-form-field {
+  width: 10%;
+  font-size: 0.8em;
+}
+
+mat-select::placeholder {
+  color: black  !important;
+  //font-size: 1.5em;
+  font-weight: 550 !important;
+}
+
+.no-data {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  min-height: 100px;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+}

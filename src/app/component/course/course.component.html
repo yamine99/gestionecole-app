@@ -3,7 +3,7 @@
 </div>
 <div >
     <form [formGroup]="dataForm" class="header">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
             <mat-select (selectionChange)="onChangeCours($event)" formControlName="cours" placeholder="Liste des cours">
                 <mat-option *ngFor="let option of dataCours | async" [value]="option.id">
                     {{option.theme}} | Heures : {{option.nbHeures}}
@@ -11,24 +11,26 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
             <mat-select (selectionChange)="onChangeStudent($event)" formControlName="student" placeholder="Liste des étudiants">
                 <mat-option *ngFor="let option of dataStudentsObs | async" [value]="option.uuid">
-                    {{option.prenom+" "+option.nom }}
+                    {{option?.prenom+" "+option?.nom }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <button  mat-raised-button class="btn-cnx" type="submit"  [disabled]="dataForm.invalid"   (click)="add()" >Associer</button>
 
     </form>
-    <table class="table table-stripped">
+    <p  *ngIf="msg" [class]="[ isValid ? 'message' : 'error']" > {{msg}}   </p>
+
+    <table *ngIf="dataSource.length > 0"  class="mat-elevation-z8">
         <thead>
-          <tr>
-            <th scope="col">Nom</th>
-            <th scope="col">Prenom</th>
-            <th scope="col">Email</th>
-            <th scope="col">Date de naissance</th>
-            <th scope="col">Adresse</th>
+          <tr class="mat-header-row">
+            <th scope="col" class="mat-header-cell">Nom</th>
+            <th scope="col" class="mat-header-cell">Prenom</th>
+            <th scope="col" class="mat-header-cell">Email</th>
+            <th scope="col" class="mat-header-cell">Date de naissance</th>
+            <th scope="col" class="mat-header-cell">Adresse</th>
           </tr>
         </thead>
         <tbody>
@@ -42,28 +44,10 @@
         </tbody>
       </table>
 
-    <!-- <table *ngIf="dataSource.length > 0" [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container *ngIf="dataSource.length == 0">
+        <tr class="no-data">
+            Aucun cours à afficher
+        </tr>
+    </ng-container>
 
-        <ng-container matColumnDef="nom">
-            <th mat-header-cell *matHeaderCellDef> Nom </th>
-            <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
-        </ng-container>
-        <ng-container matColumnDef="prenom">
-            <th mat-header-cell *matHeaderCellDef> Prénom </th>
-            <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="dateofbirth">
-            <th mat-header-cell *matHeaderCellDef> Date de naissance </th>
-            <td mat-cell *matCellDef="let element"> {{element.dateNaissance}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="adresse">
-            <th mat-header-cell *matHeaderCellDef> Adresse </th>
-            <td mat-cell *matCellDef="let element"> {{element.adresse}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table> -->
 </div>
