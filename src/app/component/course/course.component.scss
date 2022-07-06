@@ -108,6 +108,10 @@ th {
 
 }
 
+.no-data{
+  background-color: transparent !important;
+}
+
 tr:nth-child(odd) {
   background-color: rgba(222, 217, 217, 0.17);
   height: 2.5vw;
