@@ -41,10 +41,6 @@ export class CourseComponent implements OnInit {
         this.dataLinksObs = this._courService.getAllLinks();
 
 
-        this.dataLinksObs.forEach((value) => {
-                console.log(value);
-            }
-        )
 
         this.dataForm = this._formBuilder.group({
             cours: [null, Validators.required],
@@ -58,6 +54,7 @@ export class CourseComponent implements OnInit {
 
     onChangeCours($event: MatSelectChange) {
         // Todo
+        /*
         console.log($event.value)
 
         let linksArray: CourseLink[];
@@ -82,6 +79,8 @@ export class CourseComponent implements OnInit {
 
 
         console.log("id cource from event : " + $event.value)
+        */
+
     }
 
     onChangeStudent($event: MatSelectChange) {
@@ -97,25 +96,27 @@ export class CourseComponent implements OnInit {
                     this._courService.getAllLinks().subscribe(value => {
                         if (value.some(e => e.idStudent == this.dataForm.value["student"] && e.idCourse == this.dataForm.value["cours"])) {
                             console.log('Exists');
-                            this.isValid = true;
-                        }
+                            this.isValid = false;
+                            this.msg ="L'étudiant suit déjà ce cours";
+
+                        }else{
+                                this._courService.association(this.dataForm.value["student"], this.dataForm.value["cours"]).subscribe(
+                                    value =>   console.log('not Exists')
+                                );
+                                this.isValid = true;
+                            this.msg =" Le cours a bien été associé à cet étudiant.";
+                            }
+
                     });
 
-                    if (!this.isValid) {
-                        console.log('not Exists');
-                        this._courService.association(this.dataForm.value["student"], this.dataForm.value["cours"]).subscribe(
-                            value => console.log("cc")
-                        );
-                    }
+
 
                 }
 
-
-                this.msg = this.isValid ? "L'étudiant suit déjà ce cours" : " Le cours a bien été associé à cet étudiant."
-
                 setTimeout(() => {
-                    this.msg = "";
-                }, 3000);
+                    this.msg = '';
+                    this.isValid=false;
+                }, 4000);
             });
 
     }

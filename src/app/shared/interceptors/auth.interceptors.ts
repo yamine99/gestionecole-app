@@ -38,7 +38,7 @@ export class AuthInterceptor implements HttpInterceptor {
         if (request.url.includes('/api/')) {
             if (token != null && token !== "") {
                 const remainingDate = new Date(expiration.getTime() - now.getTime());
-                if (remainingDate.getMinutes() <= 0 && remainingDate.getSeconds() <= 40) {
+                if (remainingDate.getMinutes() <= 5) {
                     const decodedToken : string = jwt_decode(token);
                     this.auth.refreshToken(token, decodedToken["sub"]).subscribe({
                         next: (response) => {
