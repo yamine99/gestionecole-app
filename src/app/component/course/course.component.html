@@ -21,7 +21,26 @@
         <button  mat-raised-button class="btn-cnx" type="submit"  [disabled]="dataForm.invalid"   (click)="add()" >Associer</button>
 
     </form>
-    <p *ngIf="msg" [class]="[isValid ? 'message' : 'error' ]" >{{msg}}</p>
+    <table class="table table-stripped">
+        <thead>
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Email</th>
+            <th scope="col">Date de naissance</th>
+            <th scope="col">Adresse</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let element of dataSource">
+            <td>{{ element.nom }}</td>
+            <td>{{ element.prenom }}</td>
+            <td>{{ element.email }}</td>
+            <td>{{ element.dateNaissance }}</td>
+            <td>{{ element.adresse }}</td>
+          </tr>
+        </tbody>
+      </table>
 
     <!-- <table *ngIf="dataSource.length > 0" [dataSource]="dataSource" class="mat-elevation-z8">
 
