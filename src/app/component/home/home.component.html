@@ -7,11 +7,11 @@
         <div class="mat-tab-body-content">
             <div *ngIf="ready|async; else spinner">
 
-            <!--    <mat-card>
+           <mat-card>
                     <form [formGroup]="formGroup" class="flex">
 
                         <mat-form-field appearance="fill" class="field-input">
-                            <mat-label>Référence</mat-label>
+                            <mat-label>Prénom & Nom</mat-label>
                             <mat-select #vcType disableRipple formControlName="nameValues">
                                 <mat-option *ngFor="let item of nameValues" [value]="item">
                                     {{item}}
@@ -27,57 +27,8 @@
                         </mat-form-field>
 
 
-                        <mat-form-field appearance="fill" class="field-input">
-                            <mat-label>Societé</mat-label>
-                            <mat-select #vcType disableRipple formControlName="societyValues">
-                                <mat-option *ngFor="let item of societyValues" [value]="item">
-                                    {{item}}
-                                </mat-option>
-                            </mat-select>
-                            <button (click)="resetFilter('societyValues', $event)"
-                                    *ngIf="formGroup.get('societyValues')?.value"
-                                    [attr.aria-label]="'Supprimer le filtre'"
-                                    mat-icon-button
-                                    matSuffix>
-                                <mat-icon>close</mat-icon>
-                            </button>
-                        </mat-form-field>
-
-
-                        <mat-form-field appearance="fill" class="field-input">
-                            <mat-label>Service</mat-label>
-                            <mat-select #vcType disableRipple formControlName="serviceValues">
-                                <mat-option *ngFor="let item of serviceValues" [value]="item">
-                                    {{item}}
-                                </mat-option>
-                            </mat-select>
-                            <button (click)="resetFilter('serviceValues', $event)"
-                                    mat-icon-button
-                                    *ngIf="formGroup.get('serviceValues')?.value"
-                                    [attr.aria-label]="'Supprimer le filtre'"
-                                    matSuffix>
-                                <mat-icon>close</mat-icon>
-                            </button>
-                        </mat-form-field>
-
-                        <mat-form-field appearance="fill" class="field-input">
-                            <mat-label>Auteur</mat-label>
-                            <mat-select #vcType disableRipple formControlName="authorValues">
-                                <mat-option *ngFor="let item of authorValues" [value]="item">
-                                    {{item}}
-                                </mat-option>
-                            </mat-select>
-                            <button (click)="resetFilter('authorValues', $event)"
-                                    *ngIf="formGroup.get('authorValues')?.value"
-                                    [attr.aria-label]="'Supprimer le filtre'"
-                                    mat-icon-button
-                                    matSuffix>
-                                <mat-icon>close</mat-icon>
-                            </button>
-                        </mat-form-field>
-
                     </form>
-                </mat-card>-->
+                </mat-card>
                 <p *ngIf="msg" class="message" >{{msg}}</p>
                 <div class="table-content">
 

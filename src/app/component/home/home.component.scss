@@ -84,16 +84,14 @@ tr:hover td {
 }
 
 mat-form-field {
-  width: 10%;
-  font-size: 0.8em;
+  width: 50%;
+  font-size: 0.9em;
+  font-weight: 500;
 }
 
 form.flex {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: space-evenly;
+  flex-direction: row-reverse;
 }
 
 .no-data {

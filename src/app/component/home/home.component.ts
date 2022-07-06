@@ -10,6 +10,7 @@ import {StudentService} from "../../service/student.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../shared/auth.service";
 import {DialogService} from "../../shared/dialog.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -22,6 +23,9 @@ export class HomeComponent implements OnInit {
   private students: Student[] = [];
   private store = new Store();
   msg !: string;
+
+    public nameValues: string[] = [];
+
   constructor(private _studentService: StudentService,
               private router: Router, private _auth: AuthService,
               private _dialogService: DialogService,
@@ -51,7 +55,10 @@ export class HomeComponent implements OnInit {
       if(this._auth.getToken('token')===null){
           this.router.navigateByUrl("/connexion").then(r => console.log(r));
       }
-
+      this.subscription.add(
+          this.formGroup.valueChanges.subscribe(result => {
+              this.filterstudents(result);
+          }))
       this.refresh();
   }
 
@@ -63,6 +70,7 @@ export class HomeComponent implements OnInit {
                   //  result = result.filter(value => value.state === false && value.refuse === false);
                   this.dataSource.data = result;
                   this.students = result;
+                  this.createOptions(result);
                   this.ready.next(true);
               }
           )
@@ -87,5 +95,42 @@ export class HomeComponent implements OnInit {
 
 
 
+    }
+
+
+    public get formGroup(): FormGroup {
+        return this.store.get(
+            'filterForm',
+            new FormGroup({
+                nameValues: new FormControl('', Validators.required),
+
+
+            })
+        );
+    }
+
+    private createOptions(students: Student[]) {
+
+        students.map(value => {
+            this.nameValues.includes(value.prenom+" "+value.nom) ? true : this.nameValues.push(value.prenom+" "+value.nom);
+
+        });
+       // Utils.array.sort(this.nameValues);
+
+    }
+
+    public resetFilter(formValue: any, event: Event) {
+        this.formGroup.get(formValue)?.setValue('');
+        event.stopPropagation();
+
+    }
+
+    private filterstudents(result: any) {
+        this.dataSource.data = this.students;
+        if (result.nameValues !== '') {
+            this.dataSource.data = this.dataSource.data.filter(value => value.prenom+" "+value.nom === result.nameValues)
+        }
+
+        console.log(this.dataSource.data);
     }
 }
