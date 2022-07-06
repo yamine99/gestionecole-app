@@ -1,7 +1,7 @@
 
 import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpBackend, HttpClient, HttpHeaders} from "@angular/common/http";
 import { environment } from "src/environments/environment";
 
 import {stringify} from "@angular/compiler/src/util";
@@ -12,7 +12,8 @@ import {Parser} from "@angular/compiler";
     providedIn: 'root'
 })
 export class AuthService {
-    constructor(private http: HttpClient, private router: Router) {
+    constructor(private http: HttpClient, private httpBackend: HttpBackend, private router: Router) {
+        this.http = new HttpClient(httpBackend);
     }
 
     login(email : string, password : string) : Observable<any> {

@@ -24,9 +24,9 @@ export class ExpireComponent implements OnInit {
         if (this._auth.getToken('token')) {
             // @ts-ignore
             let tokenDate = new Date(this._auth.getToken('expiration'));
-
+            this.isValid = false;
             this.date = new Date(tokenDate.getTime() - Date.now());
-            if (this.date.getMinutes() <= 13 && this.date.getSeconds() < 59) {
+            if (this.date.getMinutes() <= 14 && this.date.getSeconds() < 20) {
                 this.isValid = true;
             }
 
