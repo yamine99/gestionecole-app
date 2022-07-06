@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {Student} from "../model/student";
 import {environment} from "../../environments/environment";
 import {Content} from "@angular/compiler/src/render3/r3_ast";
@@ -10,15 +10,27 @@ import {Content} from "@angular/compiler/src/render3/r3_ast";
 })
 export class StudentService {
 
-  public constructor(private http: HttpClient) {
+  studentSub : Subject<Student[]> = new Subject();
 
+  public constructor(private http: HttpClient) { }
+
+  getAllStudents() {
+    return this.http.get<Student[]>(environment.api.endpoint+"getall").subscribe({
+      next: (res) =>
+      {
+        this.studentSub.next(res.slice())
+      }, 
+      error: (error) => { 
+
+      }
+    });
   }
 
   getAll(): Observable<Student[]> {
     return this.http.get<Student[]>(environment.api.endpoint+"getall");
   }
 
-  getByUuid(uuid:string): Observable<Student> {
+  getByUuid(uuid:String): Observable<Student> {
     return this.http.get<Student>(environment.api.endpoint+"get/"+uuid);
   }
 

@@ -42,9 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   private get dataTable(): Observable<Student[]> {
-
       return this.store.get('data_table', this._studentService.getAll());
-
   }
 
   public get ready(): ReplaySubject<boolean> {

@@ -21,6 +21,10 @@ export class CoursService {
         return this.http.get<CourseLink[]>(environment.api.root + "api/link/getall");
     }
 
+    getByCourse(id : number) : Observable<CourseLink[]> {
+        return this.http.get<CourseLink[]>(environment.api.root + `api/link/getByCourse/${id}`);
+    }
+
     association(idStudent: string, idCourse: number){
         let form = {'idStudent':idStudent, 'idCourse':idCourse};
         return this.http.post<CourseLink[]>(environment.api.root + "api/link",form);
