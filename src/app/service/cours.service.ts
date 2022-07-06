@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Cours} from "../model/cours";
 import {environment} from "../../environments/environment";
+import { CourseLink } from 'src/app/model/course-link.model';
 
 @Injectable({
     providedIn: 'root'
@@ -15,5 +16,13 @@ export class CoursService {
 
     getAll(): Observable<Cours[]> {
         return this.http.get<Cours[]>(environment.api.root + "api/course");
+    }
+    getAllLinks() : Observable<CourseLink[]> {
+        return this.http.get<CourseLink[]>(environment.api.root + "api/link/getall");
+    }
+
+    association(idStudent: string, idCourse: number){
+        let form = {'idStudent':idStudent, 'idCourse':idCourse};
+        return this.http.post<CourseLink[]>(environment.api.root + "api/link",form);
     }
 }

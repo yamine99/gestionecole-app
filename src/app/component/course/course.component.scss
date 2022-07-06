@@ -2,8 +2,6 @@
 @import "../../../variables.scss";
 
 
-
-
 .title {
   display: flex;
   align-items: center;
@@ -14,4 +12,28 @@
   color: $main-color;
   border-bottom: solid  $main-color 2px;
   height: 40px;
+}
+
+
+table {
+  width: 100%;
+}
+
+.header{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.btn-cnx{
+  background-color: $main-color;
+  color: white;
+}
+
+
+mat-form-field {
+  width: 10%;
+  font-size: 0.7em;
 }

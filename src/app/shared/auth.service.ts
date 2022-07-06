@@ -25,6 +25,10 @@ export class AuthService {
        return localStorage.getItem(element);
     }
 
+    refreshToken(token : String | null, email : String | unknown ) : Observable<any>{
+        return this.http.get(`${environment.api.refresh}${email}`, {headers: new HttpHeaders({"Accept":"application/json","Authorization":`Bearer ${token}`}), observe: "response", responseType: "json"});
+    }
+
     removeToken(){
         localStorage.removeItem('token');
         localStorage.removeItem('expiration');

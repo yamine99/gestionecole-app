@@ -1,20 +1,56 @@
 <div class="title">
     <h1 mat-dialog-title> Cours</h1>
-
 </div>
-<div>
+<div >
+    <form [formGroup]="dataForm" class="header">
+        <mat-form-field appearance="outline">
+            <mat-select (selectionChange)="onChangeCours($event)" formControlName="cours" placeholder="Liste des cours">
+                <mat-option *ngFor="let option of dataCours | async" [value]="option.id">
+                    {{option.theme}} | Heures : {{option.nbHeures}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-    <form [formGroup]="coursForm">
-<mat-form-field appearance="fill">
-    <mat-select (selectionChange)="onChangeCours($event)" formControlName="cours"
-                placeholder="List des cours">
+        <mat-form-field appearance="outline">
+            <mat-select (selectionChange)="onChangeCours($event)" formControlName="student" placeholder="Liste des étudiants">
+                <mat-option *ngFor="let option of dataStudentsObs | async" [value]="option.uuid">
+                    {{option.prenom+" "+option.nom }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button  mat-raised-button class="btn-cnx" type="submit"   (click)="add()" >Associer</button>
 
-        <mat-option *ngFor="let option of dataCours$ | async" [value]="option.id">
-            {{option.theme}} | Heurs : {{option.nbHeures}}
-        </mat-option>
+    </form>
+    <table mat-table [dataSource]="dataStudentsObs" class="mat-elevation-z8">
 
-    </mat-select>
-</mat-form-field>
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
 
-        </form>
+        <!-- Position Column -->
+        <ng-container matColumnDef="nom">
+            <th mat-header-cell *matHeaderCellDef> Nom </th>
+            <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="prenom">
+            <th mat-header-cell *matHeaderCellDef> Prénom </th>
+            <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="dateofbirth">
+            <th mat-header-cell *matHeaderCellDef> Date de naissance </th>
+            <td mat-cell *matCellDef="let element"> {{element.dateNaissance}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="adresse">
+            <th mat-header-cell *matHeaderCellDef> Adresse </th>
+            <td mat-cell *matCellDef="let element"> {{element.adresse}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 </div>
