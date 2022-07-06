@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit {
       )
   }
 
-    delete(uuid: string) {
+    delete(uuid: any) {
         this._dialogService.openConfirmDialog("Voulez-vous vraiment supprimer !").afterClosed().subscribe(
             res => {
                 if (res) {
@@ -92,8 +92,6 @@ export class HomeComponent implements OnInit {
                     });
                 }
             });
-
-
 
     }
 

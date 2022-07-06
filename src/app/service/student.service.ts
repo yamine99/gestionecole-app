@@ -50,8 +50,8 @@ export class StudentService {
     return this.http.post<any>(environment.api.endpoint+"add", student);
   }
 
-  deleteStudent(uuid:string): Observable<string>{
-    return this.http.delete<string>(environment.api.endpoint+"delete/"+uuid);
+  deleteStudent(uuid:any): Observable<any>{
+    return this.http.delete<any>(environment.api.endpoint+"delete/"+uuid);
   }
 
 
