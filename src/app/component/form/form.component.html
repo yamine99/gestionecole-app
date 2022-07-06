@@ -1,7 +1,7 @@
 
 
 <div class="title">
-    <h1 mat-dialog-title>Edit l' étudiant</h1>
+    <h1 mat-dialog-title>Créer un étudiant</h1>
 
 </div>
 <p *ngIf="msg" class="message" >{{msg}}</p>
@@ -18,7 +18,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Nom</mat-label>
 
-            <input matInput
+            <input id="btn-form-student-lastname" matInput
                    formControlName="lastName"
                    required>
 
@@ -27,7 +27,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Prénom</mat-label>
 
-            <input matInput
+            <input id="btn-form-student-firstname" matInput
                    formControlName="firstName"
                    required         >
 
@@ -36,7 +36,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Date de naissance</mat-label>
 
-            <input matInput type="date"
+            <input id="btn-form-student-naissance" matInput type="date"
                    formControlName="date"
                    required>
 
@@ -46,7 +46,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Mail</mat-label>
 
-            <input type="email"
+            <input id="btn-form-student-email" type="email"
                    matInput
                    formControlName="email"
                    required
@@ -57,7 +57,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Adresse</mat-label>
 
-            <input type="text"
+            <input id="btn-form-student-adresse" type="text"
                    matInput
                    formControlName="address"
                    required
@@ -67,12 +67,12 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Téléphone</mat-label>
-            <input type="phone" matInput formControlName="phone" required>
+            <input id="btn-form-student-telephone" type="phone" matInput formControlName="phone" required>
 
         </mat-form-field>
 
         <div class="footer-form"  >
-            <button   [class.spinner]="loading" [disabled]="loading"  [disabled]="addForm.invalid"  class="btn-send" mat-raised-button (click)="onSubmit()">Créer un étudiant
+            <button  id="btn-form-submit-student" [class.spinner]="loading" [disabled]="loading"  [disabled]="addForm.invalid"  class="btn-send" mat-raised-button (click)="onSubmit()">Créer un étudiant
 
             </button>
             <button mat-raised-button  class="btn-return" (click)="onRest()">Réinitialiser</button>

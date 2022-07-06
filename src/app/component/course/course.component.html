@@ -4,7 +4,7 @@
 <div class="cours-action">
     <form [formGroup]="dataForm" class="header">
         <mat-form-field appearance="fill">
-            <mat-select (selectionChange)="onChangeCours($event)" formControlName="cours" placeholder="Liste des cours">
+            <mat-select id="select-cours-course-list" (selectionChange)="onChangeCours($event)" formControlName="cours" placeholder="Liste des cours">
                 <mat-option *ngFor="let option of dataCours | async" [value]="option.id">
                     {{option.theme}} | Heures : {{option.nbHeures}}
                 </mat-option>
@@ -12,13 +12,13 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-select (selectionChange)="onChangeStudent($event)" formControlName="student" placeholder="Liste des étudiants">
+            <mat-select id="select-course-etudiant-list" (selectionChange)="onChangeStudent($event)" formControlName="student" placeholder="Liste des étudiants">
                 <mat-option *ngFor="let option of dataStudentsObs | async" [value]="option.uuid">
                     {{option?.prenom+" "+option?.nom }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <button  mat-raised-button class="btn-cnx" type="submit"  [disabled]="dataForm.invalid"   (click)="add()" >Associer</button>
+        <button  id="btn-course-link" mat-raised-button class="btn-cnx" type="submit"  [disabled]="dataForm.invalid"   (click)="add()" >Associer</button>
 
     </form>
     <p  *ngIf="msg" [class]="[ isValid ? 'message' : 'error']" > {{msg}}   </p>

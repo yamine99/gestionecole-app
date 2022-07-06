@@ -18,7 +18,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Nom</mat-label>
 
-                <input matInput
+                <input id="btn-edit-input-lastname" matInput
                        formControlName="lastName"
                        required>
 
@@ -27,7 +27,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Prénom</mat-label>
 
-                <input matInput
+                <input id="btn-edit-input-firstname" matInput
                        formControlName="firstName"
                        required         >
 
@@ -36,7 +36,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Date de naissance</mat-label>
 
-                <input matInput type="date"
+                <input id="btn-edit-input-datenaissance" matInput type="date"
                        formControlName="date"
                        required>
 
@@ -46,7 +46,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Mail</mat-label>
 
-                <input type="email"
+                <input  id="btn-edit-input-email" type="email"
                        matInput
                        formControlName="email"
                        required
@@ -57,7 +57,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Adresse</mat-label>
 
-                <input type="text"
+                <input id="btn-edit-input-adresse" type="text"
                        matInput
                        formControlName="address"
                        required
@@ -67,17 +67,17 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Téléphone</mat-label>
-                <input type="phone" matInput formControlName="phone" required>
+                <input id="btn-edit-input-telephone" type="phone" matInput formControlName="phone" required>
 
             </mat-form-field>
 
             <div class="footer-form"  >
-                <button   [class.spinner]="loading" [disabled]="loading"
+                <button  id="btn-edit-submit-form" [class.spinner]="loading" [disabled]="loading"
                           [disabled]="updateForm.invalid"  class="btn-send" mat-raised-button (click)="onSubmit()">
                     Éditer
 
                 </button>
-                <button mat-raised-button  class="btn-return" (click)="onRest()">Réinitialiser</button>
+                <button mat-raised-button id="btn-edit-clear-form" class="btn-return" (click)="onRest()">Réinitialiser</button>
             </div>
 
         </form>

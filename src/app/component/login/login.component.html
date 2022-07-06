@@ -8,7 +8,7 @@
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
 
-            <input matInput type="email"
+            <input id="input-login-email" matInput type="email"
                    formControlName="mail"
                    required>
 
@@ -17,14 +17,14 @@
         <mat-form-field appearance="outline">
             <mat-label>Mot de passe</mat-label>
 
-            <input matInput type="password"
+            <input id="input-login-pwd" matInput type="password"
                    formControlName="password"
                    required >
 
         </mat-form-field>
            <p *ngIf="msg" class="msg">{{msg}}</p>
         <mat-card-actions>
-            <button mat-raised-button class="btn-cnx" type="submit"    [disabled]="loginForm.invalid" (click)="onSubmit()">Se connecter</button>
+            <button id="btn-input-submit" mat-raised-button class="btn-cnx" type="submit"    [disabled]="loginForm.invalid" (click)="onSubmit()">Se connecter</button>
 
         </mat-card-actions>
         </form>

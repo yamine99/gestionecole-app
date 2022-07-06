@@ -6,7 +6,7 @@
 </mat-toolbar>
 <!-- composant menu -->
 <mat-toolbar  *ngIf="_auth.getToken('token')">
-<button class="btn-menu"
+<button id="btn-header-menu" class="btn-menu"
             (click)="_layout.toggleSidenav()"
             mat-icon-button>
         <mat-icon *ngIf="!_layout.isSidenavOpen">menu</mat-icon>
@@ -15,7 +15,7 @@
 
     <img class='logo-ensup' alt="Logo Eurofeu" src="assets/img/logo.png">
     <a [routerLinkActiveOptions]="{exact: true}" routerLink="" routerLinkActive="active-link">
-        <button class="menu-button" mat-button>
+        <button id="btn-header-show-student" class="menu-button" mat-button>
             <mat-icon>home</mat-icon>
             <span>Étudiants </span>
         </button>
@@ -23,13 +23,13 @@
 
     <a [routerLinkActiveOptions]="{exact: true}" routerLink="cours"
        routerLinkActive="active-link">
-        <button class="menu-button" mat-button>
+        <button id="btn-header-cours" class="menu-button" mat-button>
             <mat-icon>account_balance</mat-icon>
             <span>Cours</span>
         </button>
     </a>
     <a [routerLinkActiveOptions]="{exact: true}" routerLink="ajouter" routerLinkActive="active-link">
-    <button class="menu-button" mat-button >
+    <button id="btn-header-create-student" class="menu-button" mat-button >
         <mat-icon>add_circle_outline</mat-icon>
         <span>Créer un étudiant</span>
     </button>
@@ -44,7 +44,7 @@
        <!-- <span  class="name-user"> M.{{(_authService.user | async)?.lastName}}</span>-->
 
         <mat-icon class="parent">account_circle</mat-icon>
-        <button class="logout-btn" mat-button  (click)="logout()">
+        <button id="btn-header-logout" class="logout-btn" mat-button  (click)="logout()">
             <mat-icon>logout</mat-icon>
             <span>Déconnexion</span>
         </button>

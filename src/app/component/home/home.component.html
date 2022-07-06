@@ -116,15 +116,15 @@
 
                             <td *matCellDef="let element" class="td-action" cols="2" mat-cell rowHeight="2:1">
 
-                                <button [routerLink]="['/etudiant/', element.uuid]" mat-button>
+                                <button id="home-btn-visibility" [routerLink]="['/etudiant/', element.uuid]" mat-button>
                                     <mat-icon>visibility</mat-icon>
                                 </button>
 
-                                <button  class="btn-update" [routerLink]="['/edit/', element.uuid]" mat-button>
+                                <button  id="home-btn-edit" class="btn-update" [routerLink]="['/edit/', element.uuid]" mat-button>
                                     <mat-icon>edit</mat-icon>
                                 </button>
 
-                                <button  class="btn-delete" (click)="delete(element.uuid)" mat-button>
+                                <button id="home-btn-delete" class="btn-delete" (click)="delete(element.uuid)" mat-button>
                                     <mat-icon>delete</mat-icon>
                                 </button>
                             </td>
