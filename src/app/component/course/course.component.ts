@@ -33,7 +33,7 @@ export class CourseComponent implements OnInit {
     this.searchStudentList = new Array<Student>();
     this.dataCours = this._coursStudent.getAll();
    
-    //this.dataStudentsObs = this._studentService.getAll();
+    this.dataStudentsObs = this._studentService.getAll();
 
     this.dataStudentsObs.subscribe(this.dataStudentsSub);
 
