@@ -2,8 +2,6 @@
 @import "../../../variables.scss";
 
 
-
-
 .title {
   display: flex;
   align-items: center;
@@ -14,4 +12,16 @@
   color: $main-color;
   border-bottom: solid  $main-color 2px;
   height: 40px;
+}
+
+
+.course-action{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10px 50px;
+}
+
+table {
+  width: 100%;
 }
