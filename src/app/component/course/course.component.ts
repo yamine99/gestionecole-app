@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Cours} from "../../model/cours";
-import {CoursService} from "../../service/cours.service";
-import {MatSelectChange} from "@angular/material/select";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Student} from 'src/app/model/student';
-import {StudentService} from 'src/app/service/student.service';
-import {CourseLink} from 'src/app/model/course-link.model';
-import {DialogService} from "../../shared/dialog.service";
+import { Component, OnInit } from '@angular/core';
+import { Observable } from "rxjs";
+import { Cours } from "../../model/cours";
+import { CoursService } from "../../service/cours.service";
+import { MatSelectChange } from "@angular/material/select";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Student } from 'src/app/model/student';
+import { StudentService } from 'src/app/service/student.service';
+import { CourseLink } from 'src/app/model/course-link.model';
+import { DialogService } from "../../shared/dialog.service";
 
 @Component({
   selector: 'app-course',
@@ -22,22 +22,23 @@ export class CourseComponent implements OnInit {
   dataSource: Student[] = [];
   studentArray: Student[] = [];
 
-    loading: boolean = false;
-    dataForm !: FormGroup;
 
-    displayedColumns: string[] = ['nom', 'prenom', 'dateofbirth', 'adresse'];
-    isValid!: boolean;
-    msg !: string;
+  loading: boolean = false;
+  dataForm !: FormGroup;
 
-    constructor(private _courService: CoursService,
-                private _dialogService: DialogService,
-                private _studentService: StudentService, private _formBuilder: FormBuilder) {
-    }
+  displayedColumns: string[] = ['nom', 'prenom', 'dateofbirth', 'adresse'];
+  isValid!: boolean;
+  msg !: string;
 
-    ngOnInit(): void {
-        this.dataCours = this._courService.getAll();
-        this.dataStudentsObs = this._studentService.getAll();
-        this.dataLinksObs = this._courService.getAllLinks();
+  constructor(private _courService: CoursService,
+    private _dialogService: DialogService,
+    private _studentService: StudentService, private _formBuilder: FormBuilder) {
+  }
+
+  ngOnInit(): void {
+    this.dataCours = this._courService.getAll();
+    this.dataStudentsObs = this._studentService.getAll();
+    this.dataLinksObs = this._courService.getAllLinks();
 
     // Get all students, links and courses
     this.dataStudentsObs = this._studentService.getAll();
@@ -74,12 +75,16 @@ export class CourseComponent implements OnInit {
           this.dataSource = [];
           this._studentService.getByUuid(link.idStudent).subscribe({
             next: (res) => {
-              this.studentArray.push(res);
-              this.dataSource = this.studentArray;
-            }
+              if (res != null) {
+                this.studentArray.push(res);
+                this.dataSource = this.studentArray;
+              }              
+            },
+            error : (error) => console.log(error)
           });
         });
-      }
+      },
+      error: (error) => console.log(error)
     });
   }
 

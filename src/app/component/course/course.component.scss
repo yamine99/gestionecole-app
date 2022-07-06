@@ -14,11 +14,6 @@
   height: 40px;
 }
 
-
-table {
-  width: 100%;
-}
-
 .header{
   display: flex;
   flex-wrap: nowrap;
@@ -65,10 +60,23 @@ mat-form-field {
 table {
   margin: 10px;
   overflow: auto;
-  height-max: 40vh;
+  max-height: 40vh;
   white-space: nowrap;
   border-radius: 5px 5px 0px 0px;
   border: solid 1px;
+  background-color: white;
+  border-spacing: 0;
+  td{
+    padding: 0.3%;
+    border-width: 1px;
+    border-left: #8A8A8A solid 1px;
+  }
+}
+
+.cours-action{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 th.mat-header-cell {
@@ -95,7 +103,6 @@ td.download button mat-icon {
 }
 
 th {
-  padding-left: 10px;
   border-bottom: solid 2px black;
   color: white;
 
@@ -103,9 +110,11 @@ th {
 
 tr:nth-child(odd) {
   background-color: rgba(222, 217, 217, 0.17);
+  height: 2.5vw;
 }
-tr:nth-child(odd) {
-  background-color: rgba(222, 217, 217, 0.17);
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.87);
+  height: 2.5vw;
 }
 
 tr:hover td {
@@ -117,7 +126,10 @@ tr:hover td {
 .mat-header-row:first-of-type {
   background-color: $main-color;
   color: white;
-
+  height: 2.5vw;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 mat-form-field {
