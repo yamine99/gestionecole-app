@@ -3,6 +3,8 @@
 </div>
 <div class="cours-action">
     <form [formGroup]="dataForm" class="header">
+
+        <button  id="btn-course-link" mat-raised-button type="submit" (click)="resetFilter()" >Réinitialiser<mat-icon>close</mat-icon></button>
         <mat-form-field appearance="fill">
             <mat-select id="select-cours-course-list" (selectionChange)="onChangeCours($event)" formControlName="cours" placeholder="Liste des cours">
                 <mat-option *ngFor="let option of dataCours | async" [value]="option.id">

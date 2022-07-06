@@ -55,7 +55,7 @@ export class CourseComponent implements OnInit {
   }
 
   onChangeCours($event: MatSelectChange) {
-
+    console.log($event.source);
     console.log("id cource from event : " + $event.value)
     let linksArray: CourseLink[] = [];
     this._courService.getByCourse($event.value).subscribe({
@@ -87,6 +87,13 @@ export class CourseComponent implements OnInit {
 
   onChangeStudent($event: MatSelectChange) {
     console.log($event.value);
+  }
+
+  resetFilter(){
+    this.dataSource.slice(0, this.dataSource.length);
+    this.dataSource = [];
+    this.ngOnInit();
+    this.dataForm.reset();
   }
 
   add() {
