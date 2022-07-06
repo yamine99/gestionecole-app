@@ -55,10 +55,7 @@ export class HomeComponent implements OnInit {
       if(this._auth.getToken('token')===null){
           this.router.navigateByUrl("/connexion").then(r => console.log(r));
       }
-      this.subscription.add(
-          this.formGroup.valueChanges.subscribe(result => {
-              this.filterstudents(result);
-          }))
+
       this.refresh();
   }
 
@@ -66,15 +63,20 @@ export class HomeComponent implements OnInit {
       this.subscription.add(
           this.dataTable.subscribe(
               (result) => {
-                  console.log(result);
-                  //  result = result.filter(value => value.state === false && value.refuse === false);
+
                   this.dataSource.data = result;
                   this.students = result;
                   this.createOptions(result);
                   this.ready.next(true);
+                  this.subscription.add(
+                      this.formGroup.valueChanges.subscribe(result => {
+                          this.filterstudents(result);
+                      }))
               }
           )
-      )
+      );
+
+
   }
 
     delete(uuid: any) {
@@ -83,7 +85,6 @@ export class HomeComponent implements OnInit {
                 if (res) {
                     this.ngOnInit();
                     this._studentService.deleteStudent(uuid).subscribe(value => {
-
                         this.msg = value.result;
                         setTimeout(() => {
                             this.msg = '';
@@ -100,9 +101,7 @@ export class HomeComponent implements OnInit {
         return this.store.get(
             'filterForm',
             new FormGroup({
-                nameValues: new FormControl('', Validators.required),
-
-
+                nameValues: new FormControl(''),
             })
         );
     }
@@ -129,6 +128,5 @@ export class HomeComponent implements OnInit {
             this.dataSource.data = this.dataSource.data.filter(value => value.prenom+" "+value.nom === result.nameValues)
         }
 
-        console.log(this.dataSource.data);
     }
 }
