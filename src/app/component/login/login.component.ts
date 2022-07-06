@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           this._auth.saveToken(response.body);
 
           this.router.navigateByUrl('').then(r => console.log(r));
-               this._auth.countdown();
+
         },
         error: (error) => {
           this.msg = "Accès refusée !"

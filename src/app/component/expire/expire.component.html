@@ -1,7 +1,5 @@
-<mat-card >
-
-
+<mat-card *ngIf="isValid">
     <h3> Votre session va expirer </h3>
     <p> Vous serez redirigé vers la page d'authentification dans </p>
-    <p> <span class="msg">0{{ number(_auth.dateNumber )}} : {{_auth.dateNumber  % 60}}  </span> </p>
+    <p> <span class="msg">{{ date.getMinutes() }} : {{ date.getSeconds() }}  </span> </p>
 </mat-card >

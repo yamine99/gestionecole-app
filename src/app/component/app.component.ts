@@ -3,6 +3,8 @@ import {DialogService} from "../shared/dialog.service";
 import {LayoutService} from "../service/layoutService";
 import {AuthService} from "../shared/auth.service";
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogConfirmComponent} from "./dialog-confirm/dialog-confirm.component";
 
 @Component({
   selector: 'app-root',
@@ -33,7 +35,6 @@ export class AppComponent {
 
 
     }
-
 
 
 

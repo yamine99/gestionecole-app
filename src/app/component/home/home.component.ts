@@ -18,7 +18,7 @@ import {DialogService} from "../../shared/dialog.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public displayedColumns: string[] = ['id', 'lastName', 'firstName', 'date', 'email', 'phone','action'];
+  public displayedColumns: string[] = ['lastName', 'firstName', 'date', 'email', 'phone','action'];
   private students: Student[] = [];
   private store = new Store();
   msg !: string;
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
       if(this._auth.getToken('token')===null){
           this.router.navigateByUrl("/connexion").then(r => console.log(r));
       }
-      this._auth.countdown();
+
     this.subscription.add(
         this.dataTable.subscribe(
             (result) => {

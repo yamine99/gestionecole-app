@@ -32,10 +32,6 @@ const routes: Routes = [
     path:"aide",
     component: HomeComponent
   },
-  {
-    path:"session",
-    component: ExpireComponent
-  },
 
 
   {

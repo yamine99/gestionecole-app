@@ -84,11 +84,6 @@
                     <table *ngIf="dataSource.data.length > 0" [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
 
 
-                        <ng-container matColumnDef="id">
-                            <th *matHeaderCellDef mat-header-cell> Identifiant</th>
-                            <td *matCellDef="let element" mat-cell> {{element.uuid}} </td>
-                        </ng-container>
-
                         <ng-container matColumnDef="lastName">
                             <th *matHeaderCellDef mat-header-cell> Nom</th>
                             <td *matCellDef="let element" mat-cell> {{element.nom}} </td>
