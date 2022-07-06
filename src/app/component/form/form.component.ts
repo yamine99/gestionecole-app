@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ThemePalette} from "@angular/material/core";
 import {Router} from "@angular/router";
 import {StudentService} from "../../service/student.service";
+import {DialogService} from "../../shared/dialog.service";
 
 @Component({
   selector: 'app-form',
@@ -20,7 +21,7 @@ export class FormComponent implements OnInit {
   checked = false;
   disabled = false;
   msg !: string;
-  constructor(private router: Router,  private _formBuilder: FormBuilder, private _studentService: StudentService,  ) { }
+  constructor(private router: Router,  private _formBuilder: FormBuilder, private _studentService: StudentService,        private _dialogService: DialogService) { }
 
   ngOnInit() {
 
@@ -39,16 +40,27 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.loading = !this.loading;
-    this._studentService.addStudent(this.addForm.value).subscribe( value => {
-      this.loading = !this.loading;
-      this.msg="L'étudiant à été bien enregistrer ";
-      console.log(this.addForm.value);
-      setTimeout(() => {
-        this.msg = "";
-      }, 2000);
-      this.addForm.reset();
-    })
+    this._dialogService.openConfirmDialog("Voulez-vous vraiment ajouter ?").afterClosed().subscribe(
+        res => {
+          if (res) {
+            this.loading = true;
+            this._studentService.addStudent(this.addForm.value).subscribe( value => {
+
+              this.msg="L'étudiant à été bien enregistrer ";
+              console.log(this.addForm.value);
+              setTimeout(() => {
+                this.msg = "";
+                this.loading = !this.loading;
+                this.addForm.reset();
+                this.router.navigateByUrl("").then(r => console.log(r));
+              }, 2000);
+
+            })
+
+
+          }
+        })
+
 
 
   }

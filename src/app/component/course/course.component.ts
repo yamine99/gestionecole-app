@@ -36,9 +36,6 @@ export class CourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataCours = this._courService.getAll();
-    this.dataStudentsObs = this._studentService.getAll();
-    this.dataLinksObs = this._courService.getAllLinks();
 
     // Get all students, links and courses
     this.dataStudentsObs = this._studentService.getAll();
@@ -112,10 +109,12 @@ export class CourseComponent implements OnInit {
               this.msg = " Le cours a bien été associé à cet étudiant.";
             }
           })
+
         }
         setTimeout(() => {
           this.msg = '';
           this.isValid = false;
+          this.ngOnInit();
         }, 4000);
       });
 

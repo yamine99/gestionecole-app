@@ -4,7 +4,6 @@
     <h1 mat-dialog-title> Étudiants - Campus SQY</h1>
 
 </div>
-<p>{{msg}}</p>
         <div class="mat-tab-body-content">
             <div *ngIf="ready|async; else spinner">
 
@@ -78,8 +77,8 @@
                         </mat-form-field>
 
                     </form>
-                </mat-card>
-                <p *ngIf="msg!=''" class="message" >{{msg}}</p>-->
+                </mat-card>-->
+                <p *ngIf="msg" class="message" >{{msg}}</p>
                 <div class="table-content">
 
                     <table *ngIf="dataSource.data.length > 0" [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
@@ -108,6 +107,11 @@
                         <ng-container matColumnDef="phone">
                             <th *matHeaderCellDef mat-header-cell> Téléphone</th>
                             <td *matCellDef="let element" mat-cell> {{element.telephone}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="addresse">
+                            <th *matHeaderCellDef mat-header-cell> Adresse</th>
+                            <td *matCellDef="let element" mat-cell> {{element.adresse}} </td>
                         </ng-container>
 
 

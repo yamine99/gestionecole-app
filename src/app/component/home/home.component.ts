@@ -18,7 +18,7 @@ import {DialogService} from "../../shared/dialog.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public displayedColumns: string[] = ['lastName', 'firstName', 'date', 'email', 'phone','action'];
+  public displayedColumns: string[] = ['lastName', 'firstName', 'date', 'email','addresse', 'phone','action'];
   private students: Student[] = [];
   private store = new Store();
   msg !: string;
@@ -52,19 +52,22 @@ export class HomeComponent implements OnInit {
           this.router.navigateByUrl("/connexion").then(r => console.log(r));
       }
 
-    this.subscription.add(
-        this.dataTable.subscribe(
-            (result) => {
-                console.log(result);
-            //  result = result.filter(value => value.state === false && value.refuse === false);
-              this.dataSource.data = result;
-              this.students = result;
-              this.ready.next(true);
-            }
-        )
-    )
+      this.refresh();
   }
 
+  refresh(){
+      this.subscription.add(
+          this.dataTable.subscribe(
+              (result) => {
+                  console.log(result);
+                  //  result = result.filter(value => value.state === false && value.refuse === false);
+                  this.dataSource.data = result;
+                  this.students = result;
+                  this.ready.next(true);
+              }
+          )
+      )
+  }
 
     delete(uuid: string) {
         this._dialogService.openConfirmDialog("Voulez-vous vraiment supprimer !").afterClosed().subscribe(
@@ -72,17 +75,16 @@ export class HomeComponent implements OnInit {
                 if (res) {
                     this.ngOnInit();
                     this._studentService.deleteStudent(uuid).subscribe(value => {
-                        console.log(value);
-                        this.msg = "L' étudiant a été bien supprimer ";
 
-
-
+                        this.msg = value.result;
+                        setTimeout(() => {
+                            this.msg = '';
+                            this.refresh();
+                        }, 4000);
                     });
                 }
             });
-        setTimeout(() => {
-            this.msg = '';
-        }, 4000);
+
 
 
     }
