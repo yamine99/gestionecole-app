@@ -35,8 +35,6 @@ export class HomeComponent implements OnInit {
     return this.store.get('data_source', new MatTableDataSource<Student>());
   }
 
-
-
   private get subscription(): Subscription {
     return this.store.get('subscription', new Subscription());
   }

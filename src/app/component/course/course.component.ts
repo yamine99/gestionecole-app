@@ -1,22 +1,20 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Observable, Subject, Subscription } from "rxjs";
-import { Cours } from "../../model/cours";
-import { CoursService } from "../../service/cours.service";
-import { MatSelectChange } from "@angular/material/select";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Student } from 'src/app/model/student';
-import { StudentService } from 'src/app/service/student.service';
-import { CourseLink } from 'src/app/model/course-link.model';
-import { DialogService } from "../../shared/dialog.service";
-import { Store } from 'src/app/shared/store';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
+import {Cours} from "../../model/cours";
+import {CoursService} from "../../service/cours.service";
+import {MatSelectChange} from "@angular/material/select";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Student} from 'src/app/model/student';
+import {StudentService} from 'src/app/service/student.service';
+import {CourseLink} from 'src/app/model/course-link.model';
+import {DialogService} from "../../shared/dialog.service";
 
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
   styleUrls: ['./course.component.scss']
 })
-export class CourseComponent implements OnInit, OnDestroy {
+export class CourseComponent implements OnInit {
 
   dataCours !: Observable<Cours[]>;
   dataLinksObs !: Observable<CourseLink[]>;
@@ -24,24 +22,27 @@ export class CourseComponent implements OnInit, OnDestroy {
   dataSource: Student[] = [];
   studentArray: Student[] = [];
 
-  loading: boolean = false;
-  dataForm !: FormGroup;
+    loading: boolean = false;
+    dataForm !: FormGroup;
 
-  displayedColumns: string[] = ['nom', 'prenom', 'dateofbirth', 'adresse'];
+    displayedColumns: string[] = ['nom', 'prenom', 'dateofbirth', 'adresse'];
+    isValid!: boolean;
+    msg !: string;
 
-  constructor(private _coursService: CoursService,
-    private _dialogService: DialogService,
-    private _studentService: StudentService, private _formBuilder: FormBuilder) { }
+    constructor(private _courService: CoursService,
+                private _dialogService: DialogService,
+                private _studentService: StudentService, private _formBuilder: FormBuilder) {
+    }
 
-  ngOnDestroy(): void {
-  }
-
-  ngOnInit(): void {
+    ngOnInit(): void {
+        this.dataCours = this._courService.getAll();
+        this.dataStudentsObs = this._studentService.getAll();
+        this.dataLinksObs = this._courService.getAllLinks();
 
     // Get all students, links and courses
     this.dataStudentsObs = this._studentService.getAll();
-    this.dataCours = this._coursService.getAll();
-    this.dataLinksObs = this._coursService.getAllLinks();
+    this.dataCours = this._courService.getAll();
+    this.dataLinksObs = this._courService.getAllLinks();
 
     // initialise table
     this.dataStudentsObs.forEach((value) => value.forEach((value1) => this.dataSource.push(value1)));
@@ -58,11 +59,11 @@ export class CourseComponent implements OnInit, OnDestroy {
   onChangeCours($event: MatSelectChange) {
 
     console.log("id cource from event : " + $event.value)
-    let linksArray : CourseLink[] = [];
-    this._coursService.getByCourse($event.value).subscribe({
-      next : (res) => {
+    let linksArray: CourseLink[] = [];
+    this._courService.getByCourse($event.value).subscribe({
+      next: (res) => {
         linksArray = res;
-        if(linksArray.length == 0){
+        if (linksArray.length == 0) {
           this.dataSource.slice(0, this.dataSource.length);
           this.dataSource = [];
         }
@@ -92,11 +93,25 @@ export class CourseComponent implements OnInit, OnDestroy {
     this._dialogService.openConfirmDialog("Voulez-vous associer cette étudiant ?").afterClosed().subscribe(
       res => {
         if (res) {
-          //  this._coursStudent.getAllLinks().subscribe(value => value.includes())
-          this._coursService.association(this.dataForm.value["student"], this.dataForm.value["cours"]).subscribe(
-            value => console.log("cc")
-          );
+          this._courService.getAllLinks().subscribe(value => {
+            if (value.some(e => e.idStudent == this.dataForm.value["student"] && e.idCourse == this.dataForm.value["cours"])) {
+              console.log('Exists');
+              this.isValid = false;
+              this.msg = "L'étudiant suit déjà ce cours";
+
+            } else {
+              this._courService.association(this.dataForm.value["student"], this.dataForm.value["cours"]).subscribe(
+                value => console.log('not Exists')
+              );
+              this.isValid = true;
+              this.msg = " Le cours a bien été associé à cet étudiant.";
+            }
+          })
         }
+        setTimeout(() => {
+          this.msg = '';
+          this.isValid = false;
+        }, 4000);
       });
 
   }

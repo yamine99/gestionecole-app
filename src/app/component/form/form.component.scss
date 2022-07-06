@@ -100,3 +100,25 @@ mat-form-field {
   animation: spinner .7s linear infinite;
 }
 
+
+.message {
+  border-radius: 5px;
+  opacity: 0.8;
+  padding: 10px;
+  background-color: $green-color;
+  color: white;
+  font-size: 0.7em;
+  width: 25%;
+  margin: 5px;
+}
+
+.error{
+  border-radius: 5px;
+  opacity: 0.8;
+  padding: 10px;
+  background-color: $fire-color;
+  color: white;
+  font-size: 0.7em;
+  width: 25%;
+  margin: 5px;
+}
