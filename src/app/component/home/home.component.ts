@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   public displayedColumns: string[] = ['lastName', 'firstName', 'date', 'email','addresse', 'phone','action'];
   private students: Student[] = [];
   private store = new Store();
-  msg !: string;
+  msg !: any;
 
     public nameValues: string[] = [];
 

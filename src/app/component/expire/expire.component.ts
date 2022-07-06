@@ -26,11 +26,11 @@ export class ExpireComponent implements OnInit {
             let tokenDate = new Date(this._auth.getToken('expiration'));
 
             this.date = new Date(tokenDate.getTime() - Date.now());
-            if (this.date.getMinutes() <= 2 && this.date.getSeconds() < 59) {
+            if (this.date.getMinutes() <= 13 && this.date.getSeconds() < 59) {
                 this.isValid = true;
             }
 
-            if (this.date.getMinutes() == 0 && this.date.getSeconds() == 0) {
+            if (this.date.getMinutes() == 13 && this.date.getSeconds() == 0) {
                 this.router.navigateByUrl('/connexion').then(() => {
                     this.isValid = false;
                     this._auth.removeToken();
