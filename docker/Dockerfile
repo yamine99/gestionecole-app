@@ -16,7 +16,7 @@ RUN npm run build -- --prod
 FROM nginx:stable-alpine
 
 # Copy the build output to replace the default nginx contents.
-COPY --from=build /usr/local/app/dist/first-project /etc/nginx/html
+COPY --from=build /usr/local/app/dist/gestionecole-app /etc/nginx/html
 COPY ./docker/default.conf /etc/nginx/conf.d/default.conf
 #COPY ./docker/50x.html /etc/nginx/html/50x.html
 
