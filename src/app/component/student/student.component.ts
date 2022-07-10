@@ -26,22 +26,17 @@ export class StudentComponent implements OnInit {
 
         this._studentService.getByUuid(this.uuid).subscribe(value => {
             this.student = value;
-            this.ready = !this.ready;
         });
 
 
         this._courseService.getAll().subscribe(value => {
-            this.courseList = value;
-
-
+            this.courseList = value
         });
 
         this._courseService.getAllLinksStudent(this.uuid).subscribe(value => {
 
             value.forEach((element, index) => {
 
-                console.log(element.idCourse);
-                //      console.log( this.courseList.filter(item => item.id===element.idCourse));
                 this.courseList?.forEach(item => {
                     if (item.id === element.idCourse) {
                         console.log(item);
@@ -52,7 +47,7 @@ export class StudentComponent implements OnInit {
 
             });
 
-
+            this.ready = !this.ready;
         });
 
 

@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
         },
         error: (error) => {
-          this.msg = "Accès refusée !"
+          this.msg = "Accès refusé !"
 
           setTimeout(() => {
             this.msg = "";
